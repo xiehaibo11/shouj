@@ -1,121 +1,189 @@
-<h1 align="center">
-  <img src="./src-tauri/icons/icon.png" alt="Clash" width="128" />
-  <br>
-  Continuation of <a href="https://github.com/zzzgydi/clash-verge">Clash Verge</a>
-  <br>
-</h1>
+# Clash Verge Mobile
 
-<h3 align="center">
-A Clash Meta GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
-</h3>
+<div align="center">
+  <img src="mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Clash Verge Mobile" width="128" />
+  
+  <h3>基于 Clash 的 Android 代理客户端</h3>
+  
+  [![Android Build](https://github.com/xiehaibo11/shouj/actions/workflows/android-build.yml/badge.svg)](https://github.com/xiehaibo11/shouj/actions/workflows/android-build.yml)
+  [![License](https://img.shields.io/github/license/xiehaibo11/shouj)](./LICENSE)
+  [![Release](https://img.shields.io/github/v/release/xiehaibo11/shouj)](https://github.com/xiehaibo11/shouj/releases)
+</div>
 
-<p align="center">
-  Languages:
-  <a href="./README.md">简体中文</a> ·
-  <a href="./docs/README_en.md">English</a> ·
-  <a href="./docs/README_es.md">Español</a> ·
-  <a href="./docs/README_ru.md">Русский</a> ·
-  <a href="./docs/README_ja.md">日本語</a>
-</p>
+## ✨ 特性
 
-## Preview
+- 🚀 **完整的 VPN 功能** - 基于 Android VPN API 实现
+- 📊 **流量统计** - 实时显示上传/下载速度和总流量
+- 🎯 **代理管理** - 支持多种代理协议，灵活切换节点
+- 🔍 **节点测速** - 单个和批量延迟测试
+- 🔄 **Clash 模式** - Rule/Global/Direct 三种模式切换
+- 📱 **通知栏控制** - 快速启动/停止 VPN
+- ⚡ **快捷设置磁贴** - 下拉快捷面板快速切换
+- 🎨 **Material Design** - 现代化的 UI 设计
+- 🌐 **配置管理** - 支持订阅链接和本地配置
+- 📈 **连接监控** - 实时查看活动连接
 
-| Dark                             | Light                             |
-| -------------------------------- | --------------------------------- |
-| ![预览](./docs/preview_dark.png) | ![预览](./docs/preview_light.png) |
+## 📱 系统要求
 
-## Install
+- Android 7.0 (API 24) 或更高版本
+- 推荐 Android 10+ 以获得最佳体验
 
-请到发布页面下载对应的安装包：[Release page](https://github.com/clash-verge-rev/clash-verge-rev/releases)<br>
-Go to the [Release page](https://github.com/clash-verge-rev/clash-verge-rev/releases) to download the corresponding installation package<br>
-Supports Windows (x64/x86), Linux (x64/arm64) and macOS 10.15+ (intel/apple).
+## 📦 下载安装
 
-#### 我应当怎样选择发行版
+### 方式 1: GitHub Releases（推荐）
+访问 [Releases 页面](https://github.com/xiehaibo11/shouj/releases) 下载最新版本的 APK
 
-| 版本        | 特征                                     | 链接                                                                                   |
-| :---------- | :--------------------------------------- | :------------------------------------------------------------------------------------- |
-| Stable      | 正式版，高可靠性，适合日常使用。         | [Release](https://github.com/clash-verge-rev/clash-verge-rev/releases)                 |
-| Alpha(废弃) | 测试发布流程。                           | [Alpha](https://github.com/clash-verge-rev/clash-verge-rev/releases/tag/alpha)         |
-| AutoBuild   | 滚动更新版，适合测试反馈，可能存在缺陷。 | [AutoBuild](https://github.com/clash-verge-rev/clash-verge-rev/releases/tag/autobuild) |
+### 方式 2: GitHub Actions 构建
+1. 访问 [Actions 页面](https://github.com/xiehaibo11/shouj/actions)
+2. 选择最新的成功构建
+3. 下载 Artifacts 中的 APK 文件
 
-#### 安装说明和常见问题，请到 [文档页](https://clash-verge-rev.github.io/) 查看
+### 安装步骤
+1. 下载 APK 文件到手机
+2. 打开文件管理器，点击 APK 文件
+3. 允许"未知来源"安装（如需要）
+4. 完成安装
+
+## 🚀 快速开始
+
+### 1. 启动应用
+首次启动会请求 VPN 权限，请点击"确定"授权
+
+### 2. 添加配置
+- 点击"配置"标签
+- 点击"+"按钮
+- 输入订阅链接或导入本地配置
+- 点击"保存"
+
+### 3. 选择节点
+- 点击"代理"标签
+- 选择代理组
+- 点击想要使用的节点
+
+### 4. 启动 VPN
+- 返回"首页"
+- 点击"连接"按钮
+- VPN 启动成功后，状态栏会显示 VPN 图标
+
+## 📖 功能说明
+
+### 首页
+- **VPN 状态** - 显示当前连接状态
+- **Clash 模式切换** - Rule/Global/Direct
+- **流量统计** - 实时上传/下载速度
+- **Clash 信息** - 核心版本、端口、运行时间
+- **IP 信息** - 当前 IP、国家、ISP
+
+### 代理
+- **节点列表** - 显示所有可用节点
+- **搜索** - 快速查找节点
+- **排序** - 按延迟或名称排序
+- **过滤** - 筛选可用/不可用节点
+- **批量测速** - 一键测试所有节点延迟
+
+### 配置
+- **订阅管理** - 添加/更新/删除订阅
+- **本地配置** - 导入本地 YAML 文件
+- **自动更新** - 定时更新订阅
+
+### 连接
+- **活动连接** - 查看所有活动连接
+- **连接详情** - 域名、IP、流量、时长
+- **关闭连接** - 单个或批量关闭
+
+### 规则
+- **规则列表** - 显示所有路由规则
+- **规则搜索** - 快速查找规则
+
+### 日志
+- **实时日志** - 查看 Clash 核心日志
+- **日志级别** - Info/Warning/Error
+
+### 设置
+- **常规** - 开机自启、自动连接、深色模式
+- **代理** - 混合端口、Allow LAN、IPv6
+- **性能** - 省电模式、数据压缩
+- **高级** - DNS、日志级别
+- **备份** - 导出/导入配置
+
+## 🔧 开发构建
+
+### 环境要求
+- Node.js 18+
+- JDK 17
+- Android SDK (API 34)
+- Android NDK
+
+### 克隆项目
+```bash
+git clone https://github.com/xiehaibo11/shouj.git
+cd shouj
+```
+
+### 安装依赖
+```bash
+cd mobile
+npm install
+```
+
+### 构建 APK
+```bash
+cd android
+./gradlew assembleDebug    # Debug 版本
+./gradlew assembleRelease  # Release 版本
+```
+
+### 运行到设备
+```bash
+# 连接 Android 设备或启动模拟器
+adb devices
+
+# 安装并运行
+./gradlew installDebug
+adb shell am start -n io.github.clashverge.mobile/.MainActivity
+```
+
+## 📚 文档
+
+- [功能对比](mobile/FEATURE_COMPARISON.md) - 桌面端与移动端功能对比
+- [实现总结](mobile/IMPLEMENTATION_SUMMARY.md) - 详细的实现说明
+- [闪退排查](mobile/CRASH_FIX_GUIDE.md) - 问题诊断和解决方案
+- [快速开始](mobile/QUICKSTART.md) - 新手入门指南
+- [开发指南](mobile/DEVELOPMENT.md) - 开发者文档
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+### 贡献指南
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 📄 许可证
+
+本项目采用 GPL-3.0 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+
+## 🙏 致谢
+
+- [Clash](https://github.com/Dreamacro/clash) - 强大的代理内核
+- [Clash Meta](https://github.com/MetaCubeX/mihomo) - Clash 的增强版本
+- [React Native](https://reactnative.dev/) - 跨平台移动应用框架
+- [Material Design](https://material.io/) - 优秀的设计系统
+
+## ⚠️ 免责声明
+
+本项目仅供学习交流使用，请勿用于非法用途。使用本软件所产生的一切后果由使用者自行承担。
+
+## 📮 联系方式
+
+- GitHub Issues: [提交问题](https://github.com/xiehaibo11/shouj/issues)
+- Email: xiehaibo11@example.com
 
 ---
 
-### TG 频道: [@clash_verge_rev](https://t.me/clash_verge_re)
-
-## Promotion
-
-#### [狗狗加速 —— 技术流机场 Doggygo VPN](https://verge.dginv.click/#/register?code=oaxsAGo6)
-
-- 高性能海外机场，免费试用，优惠套餐，解锁流媒体，全球首家支持 Hysteria 协议。
-- 使用 Clash Verge 专属邀请链接注册送 3 天，每天 1G 流量免费试用：[点此注册](https://verge.dginv.click/#/register?code=oaxsAGo6)
-- Clash Verge 专属 8 折优惠码: verge20 (仅有 500 份)
-- 优惠套餐每月仅需 15.8 元，160G 流量，年付 8 折
-- 海外团队，无跑路风险，高达 50% 返佣
-- 集群负载均衡设计，高速专线(兼容老客户端)，极低延迟，无视晚高峰，4K 秒开
-- 全球首家 Hysteria 协议机场，现已上线更快的 `Hysteria2` 协议(Clash Verge 客户端最佳搭配)
-- 解锁流媒体及 ChatGPT
-- 官网：[https://狗狗加速.com](https://verge.dginv.click/#/register?code=oaxsAGo6)
-
-#### 本项目的构建与发布环境由 [YXVM](https://yxvm.com/aff.php?aff=827) 独立服务器全力支持，
-
-感谢提供 独享资源、高性能、高速网络 的强大后端环境。如果你觉得下载够快、使用够爽，那是因为我们用了好服务器！
-
-🧩 YXVM 独立服务器优势：
-
-- 🌎 优质网络，回程优化，下载快到飞起
-- 🔧 物理机独享资源，非VPS可比，性能拉满
-- 🧠 适合跑代理、搭建 WEB 站 CDN 站 、搞 CI/CD 或任何高负载应用
-- 💡 支持即开即用，多机房选择，CN2 / IEPL 可选
-- 📦 本项目使用配置已在售，欢迎同款入手！
-- 🎯 想要同款构建体验？[立即下单 YXVM 独立服务器！](https://yxvm.com/aff.php?aff=827)
-
-## Features
-
-- 基于性能强劲的 Rust 和 Tauri 2 框架
-- 内置[Clash.Meta(mihomo)](https://github.com/MetaCubeX/mihomo)内核，并支持切换 `Alpha` 版本内核。
-- 简洁美观的用户界面，支持自定义主题颜色、代理组/托盘图标以及 `CSS Injection`。
-- 配置文件管理和增强（Merge 和 Script），配置文件语法提示。
-- 系统代理和守卫、`TUN(虚拟网卡)` 模式。
-- 可视化节点和规则编辑
-- WebDav 配置备份和同步
-
-### FAQ
-
-Refer to [Doc FAQ Page](https://clash-verge-rev.github.io/faq/windows.html)
-
-### Donation
-
-[捐助Clash Verge Rev的开发](https://github.com/sponsors/clash-verge-rev)
-
-## Development
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
-
-To run the development server, execute the following commands after all prerequisites for **Tauri** are installed:
-
-```shell
-pnpm i
-pnpm run prebuild
-pnpm dev
-```
-
-## Contributions
-
-Issue and PR welcome!
-
-## Acknowledgement
-
-Clash Verge rev was based on or inspired by these projects and so on:
-
-- [zzzgydi/clash-verge](https://github.com/zzzgydi/clash-verge): A Clash GUI based on tauri. Supports Windows, macOS and Linux.
-- [tauri-apps/tauri](https://github.com/tauri-apps/tauri): Build smaller, faster, and more secure desktop applications with a web frontend.
-- [Dreamacro/clash](https://github.com/Dreamacro/clash): A rule-based tunnel in Go.
-- [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo): A rule-based tunnel in Go.
-- [Fndroid/clash_for_windows_pkg](https://github.com/Fndroid/clash_for_windows_pkg): A Windows/macOS GUI based on Clash.
-- [vitejs/vite](https://github.com/vitejs/vite): Next generation frontend tooling. It's fast!
-
-## License
-
-GPL-3.0 License. See [License here](./LICENSE) for details.
+<div align="center">
+  Made with ❤️ by Clash Verge Mobile Team
+</div>
