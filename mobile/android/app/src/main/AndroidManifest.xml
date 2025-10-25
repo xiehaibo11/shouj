@@ -71,7 +71,7 @@
 
         <!-- Quick Settings Tile -->
         <service
-            android:name=".tile.ProxyTileService"
+            android:name=".service.ClashTileService"
             android:exported="true"
             android:icon="@drawable/ic_tile"
             android:label="@string/tile_label"
@@ -80,6 +80,17 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <!-- 通知栏操作广播接收器 -->
+        <receiver
+            android:name=".receiver.VpnActionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="io.github.clashverge.ACTION_TOGGLE_VPN" />
+                <action android:name="io.github.clashverge.ACTION_DISCONNECT" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

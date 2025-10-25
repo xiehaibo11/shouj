@@ -16,6 +16,7 @@ import {
   SegmentedButtons,
   useTheme,
   ActivityIndicator,
+  FAB,
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -31,6 +32,7 @@ export default function ProxiesScreen() {
   const [sortType, setSortType] = useState<SortType>('default');
   const [filterType, setFilterType] = useState<FilterType>('all');
   const [testingIds, setTestingIds] = useState<Set<string>>(new Set());
+  const [testingAll, setTestingAll] = useState(false);
 
   const { groups, proxies, currentGroup, selectGroup, mutate } = useProxies();
 
@@ -89,6 +91,28 @@ export default function ProxiesScreen() {
     } catch (error) {
       console.error('选择节点失败:', error);
     }
+  };
+
+  const handleTestAllDelay = async () => {
+    setTestingAll(true);
+    const testPromises = filteredProxies.map(async (proxy) => {
+      setTestingIds(prev => new Set(prev).add(proxy.name));
+      try {
+        await testDelay(proxy.name);
+      } catch (error) {
+        console.error(`测速失败 ${proxy.name}:`, error);
+      } finally {
+        setTestingIds(prev => {
+          const next = new Set(prev);
+          next.delete(proxy.name);
+          return next;
+        });
+      }
+    });
+    
+    await Promise.all(testPromises);
+    await mutate();
+    setTestingAll(false);
   };
 
   const renderProxyItem = ({ item }: { item: any }) => {
@@ -242,6 +266,16 @@ export default function ProxiesScreen() {
           </View>
         }
       />
+
+      {/* 批量测速按钮 */}
+      <FAB
+        icon="speedometer"
+        label="全部测速"
+        onPress={handleTestAllDelay}
+        loading={testingAll}
+        disabled={testingAll || filteredProxies.length === 0}
+        style={styles.fab}
+      />
     </View>
   );
 }
@@ -310,6 +344,12 @@ const styles = StyleSheet.create({
   emptyText: {
     marginTop: 16,
     color: 'gray',
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });
 

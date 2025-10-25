@@ -88,3 +88,22 @@ export async function resetTrafficStats() {
   return invoke('reset_traffic_stats');
 }
 
+// Clash 模式
+export async function getClashMode() {
+  return invoke('get_clash_mode');
+}
+
+export async function setClashMode(mode: string) {
+  return invoke('set_clash_mode', { mode });
+}
+
+// Clash 信息
+export async function getClashInfo() {
+  return invoke('get_clash_info');
+}
+
+// IP 信息
+export async function getIpInfo() {
+  return invoke('get_ip_info');
+}
+

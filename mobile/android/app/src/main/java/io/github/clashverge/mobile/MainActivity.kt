@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.github.clashverge.mobile.vpn.ClashVpnService
+import io.github.clashverge.mobile.service.VpnNotificationService
 
 class MainActivity : AppCompatActivity() {
     
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvCurrentProxy: TextView
     
     private var isVPNConnected = false
+    private lateinit var notificationService: VpnNotificationService
     
     companion object {
         private const val VPN_REQUEST_CODE = 1001
@@ -27,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+        notificationService = VpnNotificationService(this)
         
         initViews()
         setupListeners()
@@ -109,6 +113,16 @@ class MainActivity : AppCompatActivity() {
             tvStatusDesc.text = "点击下方按钮启用 VPN"
             btnToggleVPN.text = "连接"
             tvCurrentProxy.text = "未选择"
+        }
+        
+        // 更新通知
+        notificationService.updateNotification(connected)
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!isVPNConnected) {
+            notificationService.cancelNotification()
         }
     }
 }
