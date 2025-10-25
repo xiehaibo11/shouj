@@ -19,7 +19,7 @@ class ClashVpnService : VpnService() {
     private var vpnInterface: ParcelFileDescriptor? = null
     private var isRunning = false
     
-    companion {
+    companion object {
         private const val TAG = "ClashVpnService"
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "clash_vpn_channel"
