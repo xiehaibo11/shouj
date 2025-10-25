@@ -24,23 +24,56 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       
+    - name: Generate debug keystore
+      run: |
+        cd mobile/android/app
+        keytool -genkey -v -keystore debug.keystore \
+          -storepass android -alias androiddebugkey -keypass android \
+          -keyalg RSA -keysize 2048 -validity 10000 \
+          -dname "CN=Android Debug,O=Android,C=US"
+      shell: bash
+      
     - name: Grant execute permission for gradlew
       run: chmod +x mobile/android/gradlew
       shell: bash
       
-    - name: Build Android APK
+    - name: Build Debug APK (for testing)
       run: |
         cd mobile/android
-        ./gradlew assembleRelease --stacktrace --info
+        ./gradlew assembleDebug --stacktrace
       shell: bash
-      env:
-        ANDROID_HOME: ${{ env.ANDROID_HOME }}
+      continue-on-error: true
+      
+    - name: Build Release APK
+      run: |
+        cd mobile/android
+        ./gradlew assembleRelease --stacktrace
+      shell: bash
+      
+    - name: List build outputs
+      run: |
+        echo "=== Debug APK ==="
+        ls -lh mobile/android/app/build/outputs/apk/debug/ || echo "No debug APK found"
+        echo ""
+        echo "=== Release APK ==="
+        ls -lh mobile/android/app/build/outputs/apk/release/ || echo "No release APK found"
+      shell: bash
+      
+    - name: Upload Debug APK
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: clash-verge-mobile-debug
+        path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+        if-no-files-found: warn
         
-    - name: Upload APK
+    - name: Upload Release APK
+      if: success()
       uses: actions/upload-artifact@v4
       with:
         name: clash-verge-mobile-release
         path: mobile/android/app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: warn
         
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/')

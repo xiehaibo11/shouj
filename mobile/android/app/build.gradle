@@ -2,7 +2,6 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 
 android {
-    ndkVersion "25.1.8937393"
     compileSdk 34
     namespace "io.github.clashverge.mobile"
 
@@ -12,6 +11,8 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -33,15 +34,19 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            minifyEnabled false
         }
         release {
             signingConfig signingConfigs.release
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            minifyEnabled false  // 暂时禁用混淆，避免 ProGuard 问题
+            // proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 
     packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0']
+        }
         pickFirst '**/libc++_shared.so'
         pickFirst '**/libfbjni.so'
     }
@@ -54,16 +59,33 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
     
-    // AndroidX
+    // AndroidX Core
     implementation "androidx.core:core-ktx:1.12.0"
     implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
     
     // Material Design
     implementation "com.google.android.material:material:1.11.0"
+    
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
+    
+    // Activity
+    implementation "androidx.activity:activity-ktx:1.8.2"
+    
+    // Test
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
 }
