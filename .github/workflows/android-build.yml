@@ -15,11 +15,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
@@ -29,20 +24,17 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       
-    - name: Install pnpm
-      run: npm install -g pnpm
+    - name: Grant execute permission for gradlew
+      run: chmod +x mobile/android/gradlew
+      shell: bash
       
-    - name: Install dependencies
-      run: |
-        cd mobile
-        pnpm install
-        
     - name: Build Android APK
       run: |
         cd mobile/android
-        chmod +x gradlew
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease --stacktrace --info
       shell: bash
+      env:
+        ANDROID_HOME: ${{ env.ANDROID_HOME }}
         
     - name: Upload APK
       uses: actions/upload-artifact@v4
@@ -57,4 +49,3 @@ jobs:
         files: mobile/android/app/build/outputs/apk/release/app-release.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
