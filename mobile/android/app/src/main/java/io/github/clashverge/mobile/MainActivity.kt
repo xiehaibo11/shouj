@@ -28,21 +28,32 @@ class MainActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        
-        notificationService = VpnNotificationService(this)
-        
-        initViews()
-        setupListeners()
+        try {
+            setContentView(R.layout.activity_main)
+            
+            notificationService = VpnNotificationService(this)
+            
+            initViews()
+            setupListeners()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "初始化失败: ${e.message}", Toast.LENGTH_LONG).show()
+            finish()
+        }
     }
     
     private fun initViews() {
-        tvStatus = findViewById(R.id.tvStatus)
-        tvStatusDesc = findViewById(R.id.tvStatusDesc)
-        btnToggleVPN = findViewById(R.id.btnToggleVPN)
-        tvUpload = findViewById(R.id.tvUpload)
-        tvDownload = findViewById(R.id.tvDownload)
-        tvCurrentProxy = findViewById(R.id.tvCurrentProxy)
+        try {
+            tvStatus = findViewById(R.id.tvStatus)
+            tvStatusDesc = findViewById(R.id.tvStatusDesc)
+            btnToggleVPN = findViewById(R.id.btnToggleVPN)
+            tvUpload = findViewById(R.id.tvUpload)
+            tvDownload = findViewById(R.id.tvDownload)
+            tvCurrentProxy = findViewById(R.id.tvCurrentProxy)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw RuntimeException("View 初始化失败: ${e.message}", e)
+        }
     }
     
     private fun setupListeners() {
