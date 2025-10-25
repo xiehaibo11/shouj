@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "productName": "Clash Verge",
+  "identifier": "io.github.clash-verge-rev.mobile",
+  "version": "1.0.0",
+  "build": {
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "bundle": {
+    "active": true,
+    "icon": [
+      "icons/icon.png",
+      "icons/icon@2x.png"
+    ],
+    "resources": [
+      "resources/*"
+    ],
+    "externalBin": [
+      "binaries/mihomo-android-arm64",
+      "binaries/mihomo-android-armv7",
+      "binaries/mihomo-ios-arm64"
+    ],
+    "android": {
+      "minSdkVersion": 24,
+      "targetSdkVersion": 34,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.BIND_VPN_SERVICE",
+        "android.permission.WAKE_LOCK",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
+      ]
+    },
+    "iOS": {
+      "minimumSystemVersion": "13.0",
+      "frameworks": [
+        "NetworkExtension"
+      ],
+      "entitlements": "Entitlements.plist"
+    }
+  },
+  "app": {
+    "security": {
+      "capabilities": [
+        "mobile-capability"
+      ],
+      "csp": null
+    },
+    "windows": []
+  },
+  "plugins": {
+    "http": {
+      "scope": [
+        "https://**",
+        "http://**"
+      ]
+    }
+  }
+}
+

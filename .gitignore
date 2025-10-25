@@ -11,3 +11,20 @@ scripts/_env.sh
 .idea
 .old
 .eslintcache
+
+# Mobile
+mobile/node_modules
+mobile/android/app/build
+mobile/android/.gradle
+mobile/ios/Pods
+mobile/ios/build
+mobile/.expo
+*.apk
+*.ipa
+*.aab
+
+# SSH Keys
+*.pem
+*.key
+*.keystore
+!debug.keystore
