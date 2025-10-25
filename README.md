@@ -122,13 +122,13 @@ cd shouj
 
 ### 安装依赖
 ```bash
-cd mobile
+cd clash-verge-rev
 npm install
 ```
 
 ### 构建 APK
 ```bash
-cd android
+cd clash-verge-rev/android
 ./gradlew assembleDebug    # Debug 版本
 ./gradlew assembleRelease  # Release 版本
 ```
@@ -139,17 +139,18 @@ cd android
 adb devices
 
 # 安装并运行
+cd clash-verge-rev/android
 ./gradlew installDebug
 adb shell am start -n io.github.clashverge.mobile/.MainActivity
 ```
 
 ## 📚 文档
 
-- [功能对比](mobile/FEATURE_COMPARISON.md) - 桌面端与移动端功能对比
-- [实现总结](mobile/IMPLEMENTATION_SUMMARY.md) - 详细的实现说明
-- [闪退排查](mobile/CRASH_FIX_GUIDE.md) - 问题诊断和解决方案
-- [快速开始](mobile/QUICKSTART.md) - 新手入门指南
-- [开发指南](mobile/DEVELOPMENT.md) - 开发者文档
+- [功能对比](clash-verge-rev/FEATURE_COMPARISON.md) - 桌面端与移动端功能对比
+- [实现总结](clash-verge-rev/IMPLEMENTATION_SUMMARY.md) - 详细的实现说明
+- [闪退排查](clash-verge-rev/CRASH_FIX_GUIDE.md) - 问题诊断和解决方案
+- [快速开始](clash-verge-rev/QUICKSTART.md) - 新手入门指南
+- [开发指南](clash-verge-rev/DEVELOPMENT.md) - 开发者文档
 
 ## 🤝 贡献
 
