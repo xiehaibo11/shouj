@@ -60,10 +60,13 @@ jobs:
           mkdir -p gradle/wrapper
           curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar
 
-      - name: Setup Gradle
+      - name: Fix gradlew line endings and permissions
         working-directory: mobile
         run: |
+          # Convert to Unix line endings (LF)
+          dos2unix gradlew 2>/dev/null || sed -i 's/\r$//' gradlew
           chmod +x gradlew
+          echo "gradlew prepared successfully"
           
       - name: Build for Android with Gradle
         working-directory: mobile
