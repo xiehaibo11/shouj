@@ -54,57 +54,28 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Rust Stable
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Install Rust Android Targets
+      - name: Download Gradle Wrapper JAR
+        working-directory: mobile
         run: |
-          rustup target add aarch64-linux-android
-          rustup target add armv7-linux-androideabi
-          rustup target add x86_64-linux-android
-          rustup target add i686-linux-android
+          mkdir -p gradle/wrapper
+          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar
 
-      - name: Rust Cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: src-tauri
-          cache-all-crates: true
-          shared-key: android-${{ matrix.target }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
+      - name: Setup Gradle
+        working-directory: mobile
         run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install Dependencies
-        run: |
-          pnpm install --frozen-lockfile
-
-      - name: Build for Android
+          chmod +x gradlew
+          
+      - name: Build for Android with Gradle
         working-directory: mobile
         run: |
           if [ "${{ matrix.target }}" == "universal" ]; then
-            pnpm run android:build:universal
-          else
-            pnpm run android:build:${{ matrix.target }}
+            ./gradlew assembleRelease
+          elif [ "${{ matrix.target }}" == "aarch64" ]; then
+            ./gradlew assembleRelease -Pandroid.injected.build.abi=arm64-v8a
+          elif [ "${{ matrix.target }}" == "armv7" ]; then
+            ./gradlew assembleRelease -Pandroid.injected.build.abi=armeabi-v7a
+          elif [ "${{ matrix.target }}" == "x86_64" ]; then
+            ./gradlew assembleRelease -Pandroid.injected.build.abi=x86_64
           fi
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"

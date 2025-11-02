@@ -1,6 +1,6 @@
 # Clash Verge Rev - Android 移动端
 
-基于 Tauri 构建的 Android 应用程序。
+纯原生 Android 客户端，使用 **Kotlin + NDK**，与 ClashMetaForAndroid 同路。
 
 ## 📋 系统要求
 
@@ -14,39 +14,29 @@
 
 #### 前置要求
 
-1. **Node.js** (v18+) 和 **pnpm**
-2. **Rust** 工具链
-3. **Android SDK** 和 **NDK**
-4. **Java JDK 17**
-
-#### 安装依赖
-
-```bash
-# 在项目根目录
-pnpm install
-
-# 进入 mobile 目录
-cd mobile
-pnpm install
-```
-
-#### 开发模式
-
-```bash
-# 在 Android 设备/模拟器上运行开发版本
-pnpm run android:dev
-```
+1. **Java JDK 17**
+2. **Android SDK** 和 **NDK** (API 24+)
+3. **Gradle 8.5+** (已包含 Gradle Wrapper)
 
 #### 生产构建
 
 ```bash
-# 构建特定架构
-pnpm run android:build:aarch64    # ARM64 (推荐)
-pnpm run android:build:armv7      # ARMv7 (老设备)
-pnpm run android:build:x86_64     # x86 64位 (模拟器)
+# 进入 mobile 目录
+cd mobile
 
-# 构建通用版本（包含所有架构）
-pnpm run android:build:universal
+# 构建所有架构（通用版）
+./gradlew assembleRelease
+
+# 构建特定架构
+./gradlew assembleRelease -Pandroid.injected.build.abi=arm64-v8a      # ARM64 (推荐)
+./gradlew assembleRelease -Pandroid.injected.build.abi=armeabi-v7a    # ARMv7 (老设备)
+./gradlew assembleRelease -Pandroid.injected.build.abi=x86_64         # x86 64位 (模拟器)
+
+# 或使用 npm scripts
+npm run gradle:build                # 通用版
+npm run gradle:build:aarch64        # ARM64
+npm run gradle:build:armv7          # ARMv7
+npm run gradle:build:x86_64         # x86_64
 ```
 
 构建产物位置：
@@ -155,16 +145,9 @@ buildTypes {
    ```
 
 2. **Android SDK/NDK 未找到**
-   - 确保已安装 Android SDK
-   - 设置环境变量 `ANDROID_HOME`
-
-3. **Rust 目标未安装**
-   ```bash
-   rustup target add aarch64-linux-android
-   rustup target add armv7-linux-androideabi
-   rustup target add x86_64-linux-android
-   rustup target add i686-linux-android
-   ```
+   - 确保已安装 Android SDK 和 NDK
+   - 设置环境变量 `ANDROID_HOME` 和 `ANDROID_NDK_HOME`
+   - 在 `local.properties` 中配置 SDK 路径
 
 ### 安装失败
 

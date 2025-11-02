@@ -1,20 +1,26 @@
 {
   "name": "clash-verge-rev-mobile",
   "version": "2.4.3",
-  "description": "Clash Verge Rev Android Mobile",
+  "description": "Clash Verge Rev Android Mobile - Native Android Client (Kotlin + NDK)",
   "scripts": {
-    "android:dev": "tauri android dev",
-    "android:build": "tauri android build",
-    "android:build:aarch64": "tauri android build --target aarch64",
-    "android:build:armv7": "tauri android build --target armv7",
-    "android:build:x86_64": "tauri android build --target x86_64",
-    "android:build:universal": "tauri android build --target universal",
-    "android:init": "tauri android init",
-    "android:sync": "tauri android sync",
-    "gradle:clean": "cd app && ./gradlew clean",
-    "gradle:build": "cd app && ./gradlew assembleRelease"
+    "gradle:clean": "./gradlew clean",
+    "gradle:build": "./gradlew assembleRelease",
+    "gradle:build:debug": "./gradlew assembleDebug",
+    "gradle:build:aarch64": "./gradlew assembleRelease -Pandroid.injected.build.abi=arm64-v8a",
+    "gradle:build:armv7": "./gradlew assembleRelease -Pandroid.injected.build.abi=armeabi-v7a",
+    "gradle:build:x86_64": "./gradlew assembleRelease -Pandroid.injected.build.abi=x86_64",
+    "gradle:install": "./gradlew installRelease",
+    "gradle:test": "./gradlew test"
   },
   "author": "Clash Verge Rev Team",
-  "license": "GPL-3.0-only"
+  "license": "GPL-3.0-only",
+  "keywords": [
+    "clash",
+    "android",
+    "vpn",
+    "proxy",
+    "kotlin",
+    "clash-meta"
+  ]
 }
 
