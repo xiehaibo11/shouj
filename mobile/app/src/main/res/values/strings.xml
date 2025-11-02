@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clash Verge Rev</string>
+    
+    <!-- 通知渠道 -->
+    <string name="notification_channel_vpn">VPN Service</string>
+    <string name="notification_channel_vpn_desc">Clash VPN 服务运行通知</string>
+    <string name="notification_channel_update">Update</string>
+    <string name="notification_channel_update_desc">应用更新通知</string>
+    
+    <!-- VPN 通知 -->
+    <string name="vpn_notification_title">Clash Verge Rev</string>
+    <string name="vpn_notification_text">代理服务运行中</string>
+    
+    <!-- 状态 -->
+    <string name="status_connected">已连接</string>
+    <string name="status_disconnected">未连接</string>
+    <string name="status_connecting">连接中…</string>
+    
+    <!-- 权限 -->
+    <string name="vpn_permission_required">需要 VPN 权限</string>
+    <string name="vpn_permission_denied">VPN 权限被拒绝</string>
+    
+    <!-- 错误信息 -->
+    <string name="error_start_vpn">启动 VPN 失败</string>
+    <string name="error_network_unavailable">网络不可用</string>
+    <string name="error_config_invalid">配置文件无效</string>
+    
+    <!-- 设置 -->
+    <string name="setting_auto_start">开机自启</string>
+    <string name="setting_allow_lan">允许局域网连接</string>
+    <string name="setting_ipv6">启用 IPv6</string>
+</resources>

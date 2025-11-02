@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- 排除缓存目录 -->
+    <exclude domain="sharedpref" path="." />
+    <exclude domain="database" path="." />
+    <exclude domain="file" path="cache/" />
+    <exclude domain="file" path="logs/" />
+</full-backup-content>
+
