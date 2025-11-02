@@ -1,0 +1,44 @@
+﻿2025-11-02T02:10:44.5156948Z Current runner version: '2.329.0'
+2025-11-02T02:10:44.5188190Z ##[group]Runner Image Provisioner
+2025-11-02T02:10:44.5189402Z Hosted Compute Agent
+2025-11-02T02:10:44.5190338Z Version: 20251016.436
+2025-11-02T02:10:44.5191498Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+2025-11-02T02:10:44.5192768Z Build Date: 2025-10-15T20:44:12Z
+2025-11-02T02:10:44.5193663Z ##[endgroup]
+2025-11-02T02:10:44.5194671Z ##[group]Operating System
+2025-11-02T02:10:44.5195577Z Ubuntu
+2025-11-02T02:10:44.5196348Z 24.04.3
+2025-11-02T02:10:44.5197199Z LTS
+2025-11-02T02:10:44.5198012Z ##[endgroup]
+2025-11-02T02:10:44.5198768Z ##[group]Runner Image
+2025-11-02T02:10:44.5199816Z Image: ubuntu-24.04
+2025-11-02T02:10:44.5201144Z Version: 20251030.96.2
+2025-11-02T02:10:44.5202759Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251030.96/images/ubuntu/Ubuntu2404-Readme.md
+2025-11-02T02:10:44.5205202Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251030.96
+2025-11-02T02:10:44.5207034Z ##[endgroup]
+2025-11-02T02:10:44.5211470Z ##[group]GITHUB_TOKEN Permissions
+2025-11-02T02:10:44.5215007Z Actions: write
+2025-11-02T02:10:44.5216052Z Attestations: write
+2025-11-02T02:10:44.5216851Z Checks: write
+2025-11-02T02:10:44.5217640Z Contents: write
+2025-11-02T02:10:44.5218523Z Deployments: write
+2025-11-02T02:10:44.5219385Z Discussions: write
+2025-11-02T02:10:44.5220236Z Issues: write
+2025-11-02T02:10:44.5221393Z Metadata: read
+2025-11-02T02:10:44.5222167Z Models: read
+2025-11-02T02:10:44.5222981Z Packages: write
+2025-11-02T02:10:44.5224485Z Pages: write
+2025-11-02T02:10:44.5225368Z PullRequests: write
+2025-11-02T02:10:44.5226144Z RepositoryProjects: write
+2025-11-02T02:10:44.5227054Z SecurityEvents: write
+2025-11-02T02:10:44.5228014Z Statuses: write
+2025-11-02T02:10:44.5228789Z ##[endgroup]
+2025-11-02T02:10:44.5232579Z Secret source: Actions
+2025-11-02T02:10:44.5234073Z Prepare workflow directory
+2025-11-02T02:10:44.5795866Z Prepare all required actions
+2025-11-02T02:10:44.5853433Z Getting action download info
+2025-11-02T02:10:44.8863533Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-11-02T02:10:44.9800765Z Download action repository 'actions/setup-java@v4' (SHA:c5195efecf7bdfc987ee8bae7a71cb8b11521c00)
+2025-11-02T02:10:45.2793013Z Download action repository 'android-actions/setup-android@v3' (SHA:9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407)
+2025-11-02T02:10:45.4742027Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-11-02T02:10:45.7066441Z Complete job name: Build Android APK (armv7)

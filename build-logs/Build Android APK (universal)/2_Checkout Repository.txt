@@ -1,0 +1,79 @@
+﻿2025-11-02T02:16:51.4867664Z ##[group]Run actions/checkout@v4
+2025-11-02T02:16:51.4868599Z with:
+2025-11-02T02:16:51.4869011Z   fetch-depth: 0
+2025-11-02T02:16:51.4869463Z   repository: xiehaibo11/shouj
+2025-11-02T02:16:51.4870152Z   token: ***
+2025-11-02T02:16:51.4870574Z   ssh-strict: true
+2025-11-02T02:16:51.4870992Z   ssh-user: git
+2025-11-02T02:16:51.4871418Z   persist-credentials: true
+2025-11-02T02:16:51.4871920Z   clean: true
+2025-11-02T02:16:51.4872336Z   sparse-checkout-cone-mode: true
+2025-11-02T02:16:51.4872846Z   fetch-tags: false
+2025-11-02T02:16:51.4873287Z   show-progress: true
+2025-11-02T02:16:51.4873897Z   lfs: false
+2025-11-02T02:16:51.4874304Z   submodules: false
+2025-11-02T02:16:51.4874746Z   set-safe-directory: true
+2025-11-02T02:16:51.4875793Z env:
+2025-11-02T02:16:51.4876204Z   CARGO_INCREMENTAL: 0
+2025-11-02T02:16:51.4876667Z   RUST_BACKTRACE: short
+2025-11-02T02:16:51.4877155Z   HUSKY: 0
+2025-11-02T02:16:51.4877592Z ##[endgroup]
+2025-11-02T02:16:51.5994750Z Syncing repository: xiehaibo11/shouj
+2025-11-02T02:16:51.5996912Z ##[group]Getting Git version info
+2025-11-02T02:16:51.5997623Z Working directory is '/home/runner/work/shouj/shouj'
+2025-11-02T02:16:51.5998564Z [command]/usr/bin/git version
+2025-11-02T02:16:51.6096330Z git version 2.51.2
+2025-11-02T02:16:51.6125994Z ##[endgroup]
+2025-11-02T02:16:51.6152282Z Temporarily overriding HOME='/home/runner/work/_temp/5053a7a7-9ff2-4e8d-b1b0-40f704d1b916' before making global git config changes
+2025-11-02T02:16:51.6155524Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-02T02:16:51.6159661Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shouj/shouj
+2025-11-02T02:16:51.6203905Z Deleting the contents of '/home/runner/work/shouj/shouj'
+2025-11-02T02:16:51.6208455Z ##[group]Initializing the repository
+2025-11-02T02:16:51.6213439Z [command]/usr/bin/git init /home/runner/work/shouj/shouj
+2025-11-02T02:16:51.6344124Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-02T02:16:51.6345630Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-02T02:16:51.6346853Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-02T02:16:51.6348150Z hint:
+2025-11-02T02:16:51.6348755Z hint: 	git config --global init.defaultBranch <name>
+2025-11-02T02:16:51.6349720Z hint:
+2025-11-02T02:16:51.6350750Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-02T02:16:51.6352449Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-02T02:16:51.6354002Z hint:
+2025-11-02T02:16:51.6354810Z hint: 	git branch -m <name>
+2025-11-02T02:16:51.6355619Z hint:
+2025-11-02T02:16:51.6356689Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-02T02:16:51.6358364Z Initialized empty Git repository in /home/runner/work/shouj/shouj/.git/
+2025-11-02T02:16:51.6364556Z [command]/usr/bin/git remote add origin https://github.com/xiehaibo11/shouj
+2025-11-02T02:16:51.6405658Z ##[endgroup]
+2025-11-02T02:16:51.6406974Z ##[group]Disabling automatic garbage collection
+2025-11-02T02:16:51.6410990Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-02T02:16:51.6442750Z ##[endgroup]
+2025-11-02T02:16:51.6444480Z ##[group]Setting up auth
+2025-11-02T02:16:51.6451654Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-02T02:16:51.6485525Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-02T02:16:51.6886267Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-02T02:16:51.6920548Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-02T02:16:51.7155307Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-02T02:16:51.7201764Z ##[endgroup]
+2025-11-02T02:16:51.7202733Z ##[group]Fetching the repository
+2025-11-02T02:16:51.7211995Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2025-11-02T02:16:54.1498486Z From https://github.com/xiehaibo11/shouj
+2025-11-02T02:16:54.1499368Z  * [new branch]        main       -> origin/main
+2025-11-02T02:16:54.1499774Z  * [new branch]        mobile-app -> origin/mobile-app
+2025-11-02T02:16:54.1500164Z  * [new tag]           autobuild  -> autobuild
+2025-11-02T02:16:54.1541004Z [command]/usr/bin/git branch --list --remote origin/main
+2025-11-02T02:16:54.1564429Z   origin/main
+2025-11-02T02:16:54.1574225Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2025-11-02T02:16:54.1594787Z 024f466f84855d4d7d1331bb6057a3d8f8688763
+2025-11-02T02:16:54.1600257Z ##[endgroup]
+2025-11-02T02:16:54.1601270Z ##[group]Determining the checkout info
+2025-11-02T02:16:54.1602277Z ##[endgroup]
+2025-11-02T02:16:54.1606168Z [command]/usr/bin/git sparse-checkout disable
+2025-11-02T02:16:54.1645587Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-02T02:16:54.1674148Z ##[group]Checking out the ref
+2025-11-02T02:16:54.1674714Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-11-02T02:16:54.3058248Z Switched to a new branch 'main'
+2025-11-02T02:16:54.3059186Z branch 'main' set up to track 'origin/main'.
+2025-11-02T02:16:54.3073009Z ##[endgroup]
+2025-11-02T02:16:54.3113924Z [command]/usr/bin/git log -1 --format=%H
+2025-11-02T02:16:54.3138200Z 024f466f84855d4d7d1331bb6057a3d8f8688763

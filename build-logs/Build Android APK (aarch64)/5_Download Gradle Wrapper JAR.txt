@@ -1,0 +1,18 @@
+﻿2025-11-02T02:17:17.8363746Z ##[group]Run mkdir -p gradle/wrapper
+2025-11-02T02:17:17.8364117Z [36;1mmkdir -p gradle/wrapper[0m
+2025-11-02T02:17:17.8364826Z [36;1mcurl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar[0m
+2025-11-02T02:17:17.8400480Z shell: /usr/bin/bash -e {0}
+2025-11-02T02:17:17.8400722Z env:
+2025-11-02T02:17:17.8400887Z   CARGO_INCREMENTAL: 0
+2025-11-02T02:17:17.8401098Z   RUST_BACKTRACE: short
+2025-11-02T02:17:17.8401290Z   HUSKY: 0
+2025-11-02T02:17:17.8401592Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:17:17.8402080Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:17:17.8402472Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2025-11-02T02:17:17.8402742Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2025-11-02T02:17:17.8402997Z ##[endgroup]
+2025-11-02T02:17:17.8553732Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-11-02T02:17:17.8554458Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-11-02T02:17:17.8554806Z 
+2025-11-02T02:17:17.8890562Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-11-02T02:17:17.8891333Z 100 45633  100 45633    0     0  1317k      0 --:--:-- --:--:-- --:--:-- 1350k

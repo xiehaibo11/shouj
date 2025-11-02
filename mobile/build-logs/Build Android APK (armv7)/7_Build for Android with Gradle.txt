@@ -1,0 +1,53 @@
+﻿2025-11-02T02:11:17.2648448Z ##[group]Run if [ "armv7" == "universal" ]; then
+2025-11-02T02:11:17.2648824Z [36;1mif [ "armv7" == "universal" ]; then[0m
+2025-11-02T02:11:17.2649080Z [36;1m  ./gradlew assembleRelease[0m
+2025-11-02T02:11:17.2649327Z [36;1melif [ "armv7" == "aarch64" ]; then[0m
+2025-11-02T02:11:17.2649665Z [36;1m  ./gradlew assembleRelease -Pandroid.injected.build.abi=arm64-v8a[0m
+2025-11-02T02:11:17.2650029Z [36;1melif [ "armv7" == "armv7" ]; then[0m
+2025-11-02T02:11:17.2650645Z [36;1m  ./gradlew assembleRelease -Pandroid.injected.build.abi=armeabi-v7a[0m
+2025-11-02T02:11:17.2651032Z [36;1melif [ "armv7" == "x86_64" ]; then[0m
+2025-11-02T02:11:17.2651370Z [36;1m  ./gradlew assembleRelease -Pandroid.injected.build.abi=x86_64[0m
+2025-11-02T02:11:17.2651691Z [36;1mfi[0m
+2025-11-02T02:11:17.2682523Z shell: /usr/bin/bash -e {0}
+2025-11-02T02:11:17.2682750Z env:
+2025-11-02T02:11:17.2682925Z   CARGO_INCREMENTAL: 0
+2025-11-02T02:11:17.2683120Z   RUST_BACKTRACE: short
+2025-11-02T02:11:17.2683302Z   HUSKY: 0
+2025-11-02T02:11:17.2683612Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:11:17.2684061Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:11:17.2684407Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2025-11-02T02:11:17.2684671Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2025-11-02T02:11:17.2684929Z   NODE_OPTIONS: --max_old_space_size=4096
+2025-11-02T02:11:17.2685163Z ##[endgroup]
+2025-11-02T02:11:17.3513641Z Downloading https://services.gradle.org/distributions/gradle-8.5-bin.zip
+2025-11-02T02:11:18.9444009Z ............10%.............20%............30%.............40%.............50%............60%.............70%.............80%............90%.............100%
+2025-11-02T02:11:20.0493749Z 
+2025-11-02T02:11:20.0495613Z Welcome to Gradle 8.5!
+2025-11-02T02:11:20.0496000Z 
+2025-11-02T02:11:20.0497059Z Here are the highlights of this release:
+2025-11-02T02:11:20.0501833Z  - Support for running on Java 21
+2025-11-02T02:11:20.0503990Z  - Faster first use with Kotlin DSL
+2025-11-02T02:11:20.0504630Z  - Improved error and warning messages
+2025-11-02T02:11:20.0505394Z 
+2025-11-02T02:11:20.0506216Z For more details see https://docs.gradle.org/8.5/release-notes.html
+2025-11-02T02:11:20.0506959Z 
+2025-11-02T02:11:20.3488190Z Starting a Gradle Daemon (subsequent builds will be faster)
+2025-11-02T02:11:23.0493414Z Calculating task graph as no cached configuration is available for tasks: assembleRelease
+2025-11-02T02:12:07.3494591Z 
+2025-11-02T02:12:07.3513996Z FAILURE: Build failed with an exception.
+2025-11-02T02:12:07.3517520Z 
+2025-11-02T02:12:07.3517757Z * Where:
+2025-11-02T02:12:07.3518733Z Build file '/home/runner/work/shouj/shouj/mobile/build.gradle.kts' line: 16
+2025-11-02T02:12:07.3519261Z 
+2025-11-02T02:12:07.3519457Z * What went wrong:
+2025-11-02T02:12:07.3523275Z Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+2025-11-02T02:12:07.3524273Z 
+2025-11-02T02:12:07.3524394Z * Try:
+2025-11-02T02:12:07.3524810Z > Run with --stacktrace option to get the stack trace.
+2025-11-02T02:12:07.3525391Z > Run with --info or --debug option to get more log output.
+2025-11-02T02:12:07.3525843Z > Run with --scan to get full insights.
+2025-11-02T02:12:07.3526201Z > Get more help at https://help.gradle.org.
+2025-11-02T02:12:07.3526396Z 
+2025-11-02T02:12:07.3526502Z BUILD FAILED in 49s
+2025-11-02T02:12:07.3526895Z Configuration cache entry stored.
+2025-11-02T02:12:07.8189416Z ##[error]Process completed with exit code 1.

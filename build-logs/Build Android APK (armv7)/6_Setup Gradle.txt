@@ -1,0 +1,12 @@
+﻿2025-11-02T02:17:17.8380412Z ##[group]Run chmod +x gradlew
+2025-11-02T02:17:17.8380692Z [36;1mchmod +x gradlew[0m
+2025-11-02T02:17:17.8412003Z shell: /usr/bin/bash -e {0}
+2025-11-02T02:17:17.8412228Z env:
+2025-11-02T02:17:17.8412390Z   CARGO_INCREMENTAL: 0
+2025-11-02T02:17:17.8412609Z   RUST_BACKTRACE: short
+2025-11-02T02:17:17.8412801Z   HUSKY: 0
+2025-11-02T02:17:17.8413084Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:17:17.8413552Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:17:17.8413915Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2025-11-02T02:17:17.8414178Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2025-11-02T02:17:17.8414422Z ##[endgroup]

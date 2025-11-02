@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 基本权限 -->
+    <!-- 权限声明 -->
+    <!-- 网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,11 +15,11 @@
 
     <!-- 前台服务权限 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"
+        tools:targetApi="34" />
 
-    <!-- 通知权限 -->
+    <!-- 通知权限 (Android 13+) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- 开机自启权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -26,7 +27,7 @@
     <!-- 唤醒锁权限 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <!-- 查询所有包权限（Android 11+） -->
+    <!-- 查询所有包权限 (用于分应用代理) -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
 
@@ -40,59 +41,66 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClashVergeRev"
-        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <!-- 主 Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.ClashVergeRev.SplashScreen">
+            android:theme="@style/Theme.ClashVergeRev"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Deep Links -->
-            <intent-filter android:autoVerify="true">
+            <!-- Deep Link - clash:// -->
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="clash" />
+            </intent-filter>
+
+            <!-- Deep Link - clash-verge:// -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="clash-verge" />
             </intent-filter>
 
-            <!-- 处理配置文件 -->
+            <!-- 配置文件导入 - .yaml/.yml -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="*" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
                 <data android:pathPattern=".*\\.yaml" />
                 <data android:pathPattern=".*\\.yml" />
             </intent-filter>
         </activity>
 
-        <!-- VPN 服务 -->
+        <!-- VPN Service -->
         <service
             android:name=".service.ClashVpnService"
             android:exported="false"
-            android:permission="android.permission.BIND_VPN_SERVICE"
-            android:foregroundServiceType="specialUse">
+            android:foregroundServiceType="specialUse"
+            android:permission="android.permission.BIND_VPN_SERVICE">
             <intent-filter>
                 <action android:name="android.net.VpnService" />
             </intent-filter>
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="proxy" />
+                android:value="vpn" />
         </service>
 
-        <!-- 开机自启接收器 -->
+        <!-- 开机自启 Receiver -->
         <receiver
             android:name=".receiver.BootReceiver"
             android:enabled="true"
@@ -100,11 +108,11 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
 
-        <!-- 网络变化监听 -->
+        <!-- 网络变化监听 Receiver -->
         <receiver
             android:name=".receiver.NetworkChangeReceiver"
             android:enabled="true"
@@ -115,7 +123,7 @@
             </intent-filter>
         </receiver>
 
-        <!-- 文件提供者 -->
+        <!-- FileProvider (用于文件分享) -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -125,7 +133,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
     </application>
 
 </manifest>
-

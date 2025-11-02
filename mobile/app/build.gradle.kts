@@ -59,6 +59,18 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.8"
     }
+    
+    // NDK 配置
+    ndkVersion = "25.2.9519653"
+    
+    // 配置 CMake 以构建 native 库
+    // 注意: 需要先编译 Go 代码生成 libclash.so
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
+    }
 
     packaging {
         resources {
@@ -95,6 +107,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.activity:activity-compose:1.8.2")
 
     // Material Design
@@ -111,6 +124,9 @@ dependencies {
 
     // JSON 解析
     implementation("com.google.code.gson:gson:2.10.1")
+    
+    // YAML 解析
+    implementation("org.yaml:snakeyaml:2.2")
 
     // 数据存储
     implementation("androidx.datastore:datastore-preferences:1.0.0")

@@ -1,0 +1,96 @@
+﻿2025-11-02T02:17:17.9062344Z ##[group]Run if [ "aarch64" == "universal" ]; then
+2025-11-02T02:17:17.9062705Z [36;1mif [ "aarch64" == "universal" ]; then[0m
+2025-11-02T02:17:17.9062976Z [36;1m  ./gradlew assembleRelease[0m
+2025-11-02T02:17:17.9063254Z [36;1melif [ "aarch64" == "aarch64" ]; then[0m
+2025-11-02T02:17:17.9063641Z [36;1m  ./gradlew assembleRelease -Pandroid.injected.build.abi=arm64-v8a[0m
+2025-11-02T02:17:17.9064026Z [36;1melif [ "aarch64" == "armv7" ]; then[0m
+2025-11-02T02:17:17.9064406Z [36;1m  ./gradlew assembleRelease -Pandroid.injected.build.abi=armeabi-v7a[0m
+2025-11-02T02:17:17.9064787Z [36;1melif [ "aarch64" == "x86_64" ]; then[0m
+2025-11-02T02:17:17.9065150Z [36;1m  ./gradlew assembleRelease -Pandroid.injected.build.abi=x86_64[0m
+2025-11-02T02:17:17.9065488Z [36;1mfi[0m
+2025-11-02T02:17:17.9094260Z shell: /usr/bin/bash -e {0}
+2025-11-02T02:17:17.9094480Z env:
+2025-11-02T02:17:17.9094649Z   CARGO_INCREMENTAL: 0
+2025-11-02T02:17:17.9094843Z   RUST_BACKTRACE: short
+2025-11-02T02:17:17.9095037Z   HUSKY: 0
+2025-11-02T02:17:17.9095357Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:17:17.9095833Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+2025-11-02T02:17:17.9096404Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2025-11-02T02:17:17.9096691Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2025-11-02T02:17:17.9096961Z   NODE_OPTIONS: --max_old_space_size=4096
+2025-11-02T02:17:17.9097212Z ##[endgroup]
+2025-11-02T02:17:17.9957072Z Downloading https://services.gradle.org/distributions/gradle-8.5-bin.zip
+2025-11-02T02:17:19.8632910Z ............10%.............20%............30%.............40%.............50%............60%.............70%.............80%............90%.............100%
+2025-11-02T02:17:21.0083221Z 
+2025-11-02T02:17:21.0084746Z Welcome to Gradle 8.5!
+2025-11-02T02:17:21.0085046Z 
+2025-11-02T02:17:21.0088443Z Here are the highlights of this release:
+2025-11-02T02:17:21.0093833Z  - Support for running on Java 21
+2025-11-02T02:17:21.0094564Z  - Faster first use with Kotlin DSL
+2025-11-02T02:17:21.0095085Z  - Improved error and warning messages
+2025-11-02T02:17:21.0095399Z 
+2025-11-02T02:17:21.0095829Z For more details see https://docs.gradle.org/8.5/release-notes.html
+2025-11-02T02:17:21.0096701Z 
+2025-11-02T02:17:21.3078149Z Starting a Gradle Daemon (subsequent builds will be faster)
+2025-11-02T02:17:24.1093818Z Calculating task graph as no cached configuration is available for tasks: assembleRelease
+2025-11-02T02:19:46.9105768Z > Task :app:preBuild UP-TO-DATE
+2025-11-02T02:19:46.9106893Z > Task :app:preReleaseBuild UP-TO-DATE
+2025-11-02T02:19:46.9120406Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+2025-11-02T02:19:46.9121566Z > Task :app:generateReleaseResValues
+2025-11-02T02:19:46.9122348Z > Task :app:buildKotlinToolingMetadata
+2025-11-02T02:19:47.0077634Z > Task :app:generateReleaseResources
+2025-11-02T02:19:49.2099028Z > Task :app:mapReleaseSourceSetPaths
+2025-11-02T02:19:49.3086085Z > Task :app:dataBindingMergeDependencyArtifactsRelease
+2025-11-02T02:19:49.3094867Z > Task :app:checkReleaseAarMetadata
+2025-11-02T02:19:49.3125577Z > Task :app:createReleaseCompatibleScreenManifests
+2025-11-02T02:19:49.3126881Z > Task :app:extractDeepLinksRelease
+2025-11-02T02:19:49.4100802Z > Task :app:packageReleaseResources
+2025-11-02T02:19:49.4101908Z > Task :app:javaPreCompileRelease
+2025-11-02T02:19:49.5076721Z > Task :app:extractProguardFiles
+2025-11-02T02:19:50.5075790Z > Task :app:mergeReleaseJniLibFolders
+2025-11-02T02:19:51.1075909Z > Task :app:processReleaseMainManifest
+2025-11-02T02:19:51.3075890Z > Task :app:processReleaseManifest
+2025-11-02T02:19:51.4099852Z > Task :app:parseReleaseLocalResources
+2025-11-02T02:19:52.7076502Z > Task :app:processReleaseManifestForPackage
+2025-11-02T02:19:53.9076006Z > Task :app:mergeReleaseResources
+2025-11-02T02:19:54.3080686Z > Task :app:mergeReleaseNativeLibs NO-SOURCE
+2025-11-02T02:19:54.4101685Z > Task :app:mergeReleaseArtProfile
+2025-11-02T02:19:54.4102777Z > Task :app:stripReleaseDebugSymbols NO-SOURCE
+2025-11-02T02:19:54.4104001Z > Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+2025-11-02T02:19:54.4105077Z > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+2025-11-02T02:19:54.4106011Z > Task :app:mergeReleaseShaders FROM-CACHE
+2025-11-02T02:19:54.5076191Z > Task :app:compileReleaseShaders NO-SOURCE
+2025-11-02T02:19:54.5104832Z > Task :app:generateReleaseAssets UP-TO-DATE
+2025-11-02T02:19:54.6096061Z > Task :app:mergeReleaseAssets FROM-CACHE
+2025-11-02T02:19:54.6097122Z > Task :app:compressReleaseAssets
+2025-11-02T02:19:54.8076412Z > Task :app:extractReleaseVersionControlInfo
+2025-11-02T02:19:54.8077201Z > Task :app:checkReleaseDuplicateClasses
+2025-11-02T02:19:54.9099586Z > Task :app:collectReleaseDependencies
+2025-11-02T02:19:55.0076544Z > Task :app:dataBindingGenBaseClassesRelease
+2025-11-02T02:19:55.0081584Z > Task :app:writeReleaseAppMetadata
+2025-11-02T02:19:55.0089271Z > Task :app:writeReleaseSigningConfigVersions
+2025-11-02T02:19:55.1090774Z > Task :app:sdkReleaseDependencyData
+2025-11-02T02:19:55.2107995Z > Task :app:processReleaseResources FAILED
+2025-11-02T02:19:55.5075556Z > Task :app:validateSigningRelease
+2025-11-02T02:19:55.6091802Z 
+2025-11-02T02:19:55.6092863Z 31 actionable tasks: 29 executed, 2 from cache
+2025-11-02T02:19:55.6093782Z FAILURE: Build failed with an exception.
+2025-11-02T02:19:55.6094533Z Configuration cache entry stored.
+2025-11-02T02:19:55.6094993Z 
+2025-11-02T02:19:55.6098606Z * What went wrong:
+2025-11-02T02:19:55.6099379Z Execution failed for task ':app:processReleaseResources'.
+2025-11-02T02:19:55.6100839Z > A failure occurred while executing com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction
+2025-11-02T02:19:55.6102132Z    > Android resource linking failed
+2025-11-02T02:19:55.6104212Z      ERROR: /home/runner/work/shouj/shouj/mobile/app/src/main/AndroidManifest.xml:33:5-128:19: AAPT: error: resource mipmap/ic_launcher (aka io.github.clash_verge_rev.clash_verge_rev:mipmap/ic_launcher) not found.
+2025-11-02T02:19:55.6105866Z          
+2025-11-02T02:19:55.6111548Z      ERROR: /home/runner/work/shouj/shouj/mobile/app/src/main/AndroidManifest.xml:33:5-128:19: AAPT: error: resource mipmap/ic_launcher_round (aka io.github.clash_verge_rev.clash_verge_rev:mipmap/ic_launcher_round) not found.
+2025-11-02T02:19:55.6114037Z          
+2025-11-02T02:19:55.6114195Z 
+2025-11-02T02:19:55.6114293Z * Try:
+2025-11-02T02:19:55.6114748Z > Run with --stacktrace option to get the stack trace.
+2025-11-02T02:19:55.6115397Z > Run with --info or --debug option to get more log output.
+2025-11-02T02:19:55.6115951Z > Run with --scan to get full insights.
+2025-11-02T02:19:55.6116639Z > Get more help at https://help.gradle.org.
+2025-11-02T02:19:55.6116943Z 
+2025-11-02T02:19:55.6117114Z BUILD FAILED in 2m 37s
+2025-11-02T02:19:55.9915798Z ##[error]Process completed with exit code 1.
