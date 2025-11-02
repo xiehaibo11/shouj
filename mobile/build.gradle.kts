@@ -4,19 +4,8 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.22" apply false
 }
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// Repositories are configured in settings.gradle.kts
+// Do not add repositories here to avoid conflicts with dependencyResolutionManagement
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
