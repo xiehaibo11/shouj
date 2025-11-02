@@ -1,210 +1,187 @@
-# Clash Verge Rev - Android Mobile
+# Clash Verge Rev - Android 移动端
 
-基于 Tauri Mobile 的 Android 移动端应用
+基于 Tauri 构建的 Android 应用程序。
 
-## 环境要求
+## 📋 系统要求
 
-### Android 开发环境
+- **Android 版本**: Android 7.0 (API 24) 或更高
+- **架构支持**: ARM64, ARMv7, x86_64, x86
+- **存储空间**: 至少 100MB
 
-1. **Android Studio** (推荐最新稳定版)
-2. **Android SDK** (API Level 33+)
-3. **Android NDK** (r25c+)
-4. **Java JDK** 17+
+## 🚀 构建说明
 
-### 环境变量配置
+### 本地开发构建
 
-```bash
-# Windows (PowerShell)
-$env:ANDROID_HOME = "C:\Users\YourUsername\AppData\Local\Android\Sdk"
-$env:ANDROID_NDK_HOME = "$env:ANDROID_HOME\ndk\25.2.9519653"
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
+#### 前置要求
 
-# macOS/Linux
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/25.2.9519653
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-```
+1. **Node.js** (v18+) 和 **pnpm**
+2. **Rust** 工具链
+3. **Android SDK** 和 **NDK**
+4. **Java JDK 17**
 
-### Rust 工具链
+#### 安装依赖
 
 ```bash
-# 安装 Android 目标
-rustup target add aarch64-linux-android
-rustup target add armv7-linux-androideabi
-rustup target add i686-linux-android
-rustup target add x86_64-linux-android
-```
-
-## 构建步骤
-
-### 1. 安装依赖
-
-```bash
-# 返回项目根目录
-cd ..
-
-# 安装前端依赖
+# 在项目根目录
 pnpm install
 
-# 预构建（下载 Mihomo 核心等）
-pnpm run prebuild
+# 进入 mobile 目录
+cd mobile
+pnpm install
 ```
 
-### 2. 开发模式
+#### 开发模式
 
 ```bash
-# 在 Android 模拟器或设备上运行
-pnpm tauri android dev
-
-# 或者使用 cargo
-cd src-tauri
-cargo tauri android dev
+# 在 Android 设备/模拟器上运行开发版本
+pnpm run android:dev
 ```
 
-### 3. 构建发布版
+#### 生产构建
 
 ```bash
-# 构建 ARM64 (推荐，主流设备)
-pnpm tauri android build --target aarch64
+# 构建特定架构
+pnpm run android:build:aarch64    # ARM64 (推荐)
+pnpm run android:build:armv7      # ARMv7 (老设备)
+pnpm run android:build:x86_64     # x86 64位 (模拟器)
 
-# 构建 ARMv7 (旧设备兼容)
-pnpm tauri android build --target armv7
-
-# 构建 x86_64 (模拟器)
-pnpm tauri android build --target x86_64
-
-# 构建所有架构
-pnpm tauri android build --target universal
+# 构建通用版本（包含所有架构）
+pnpm run android:build:universal
 ```
 
-### 4. 签名 APK
+构建产物位置：
+```
+mobile/app/build/outputs/apk/release/
+```
+
+### 📦 GitHub Actions 自动构建
+
+项目已配置 GitHub Actions 自动构建，支持以下触发方式：
+
+#### 1. 手动触发构建
+
+在 GitHub 仓库页面：
+```
+Actions → Android Build → Run workflow
+```
+
+#### 2. 推送代码自动构建
+
+当推送到 `main` 分支且包含以下文件变更时自动触发：
+- `mobile/**`
+- `src/**`
+- `src-tauri/**`
+
+构建完成后，APK 将作为 **Artifacts** 上传，可在 Actions 页面下载。
+
+#### 3. 创建正式发布
+
+创建以 `android-v` 开头的 tag 触发正式发布：
 
 ```bash
-# 生成密钥库（首次）
-keytool -genkey -v -keystore clash-verge-rev.keystore \
-  -alias clash-verge-rev -keyalg RSA -keysize 2048 -validity 10000
+# 创建 tag
+git tag android-v1.0.0
 
-# 签名 APK
-jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
-  -keystore clash-verge-rev.keystore \
-  app-release-unsigned.apk clash-verge-rev
-
-# 对齐 APK
-zipalign -v 4 app-release-unsigned.apk clash-verge-rev-release.apk
+# 推送 tag
+git push origin android-v1.0.0
 ```
 
-## 项目结构
+这将自动：
+- 构建所有架构的 APK
+- 创建 GitHub Release
+- 上传 APK 到 Release 页面
 
-```
-mobile/
-├── app/                          # Android 应用主模块
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/            # Java/Kotlin 源代码
-│   │   │   ├── res/             # 资源文件
-│   │   │   └── AndroidManifest.xml
-│   │   └── androidTest/         # Android 测试
-│   ├── build.gradle.kts         # 应用级构建配置
-│   └── proguard-rules.pro       # 混淆规则
-├── build.gradle.kts             # 项目级构建配置
-├── gradle.properties            # Gradle 配置
-├── settings.gradle.kts          # Gradle 设置
-└── README.md                    # 本文件
-```
+## 📱 APK 架构选择指南
 
-## 功能特性
+| 架构 | 适用设备 | 说明 |
+|------|---------|------|
+| **ARM64** (aarch64) | 2015年后的大多数设备 | ✅ **推荐**，性能最佳 |
+| **ARMv7** (armv7) | 2015年前的老设备 | 32位架构，兼容性好 |
+| **x86_64** | Android 模拟器 | 适用于开发测试 |
+| **Universal** | 所有设备 | 包含所有架构，体积最大 |
 
-### 已实现功能
-- ✅ 核心代理功能（基于 Mihomo）
-- ✅ 配置文件管理
-- ✅ 系统 VPN 模式
-- ✅ 节点延迟测试
-- ✅ 规则管理
-- ✅ 暗色/亮色主题
-- ✅ 多语言支持
+## 🔧 配置说明
 
-### 移动端特有功能
-- ✅ VPN 服务（VpnService API）
-- ✅ 通知栏快捷控制
-- ✅ 省电模式优化
-- ✅ 流量统计
-- ✅ 自动启动
+### 应用配置
 
-## 权限说明
+主要配置文件：
+- `mobile/app/build.gradle.kts` - Gradle 构建配置
+- `mobile/app/src/main/AndroidManifest.xml` - 应用清单
 
-应用需要以下权限：
+### 版本管理
 
-- `INTERNET` - 网络访问
-- `ACCESS_NETWORK_STATE` - 网络状态检测
-- `FOREGROUND_SERVICE` - 前台服务（保持连接）
-- `RECEIVE_BOOT_COMPLETED` - 开机自启
-- `VIBRATE` - 通知振动
-- `BIND_VPN_SERVICE` - VPN 服务绑定
-
-## 调试技巧
-
-### 查看日志
-
-```bash
-# Android Logcat
-adb logcat | grep "ClashVerge"
-
-# Tauri 日志
-adb logcat | grep "RustCore"
+版本号在根目录 `package.json` 中统一管理：
+```json
+{
+  "version": "2.4.3"
+}
 ```
 
-### 安装到设备
+### 签名配置
 
-```bash
-# 查看连接的设备
-adb devices
+生产构建使用 debug 签名（第 36 行）。正式发布需要配置 release 签名：
 
-# 安装 APK
-adb install path/to/app-release.apk
+```kotlin
+// mobile/app/build.gradle.kts
+signingConfigs {
+    create("release") {
+        storeFile = file("your-keystore.jks")
+        storePassword = "your-store-password"
+        keyAlias = "your-key-alias"
+        keyPassword = "your-key-password"
+    }
+}
 
-# 卸载应用
-adb uninstall io.github.clash_verge_rev.clash_verge_rev
+buildTypes {
+    release {
+        signingConfig = signingConfigs.getByName("release")
+        // ...
+    }
+}
 ```
 
-## 常见问题
+## 🐛 故障排除
 
-### 1. Android SDK 未找到
+### 构建失败
 
-确保设置了 `ANDROID_HOME` 环境变量并指向正确的 SDK 路径。
+1. **依赖问题**
+   ```bash
+   # 清理缓存
+   cd mobile
+   ./gradlew clean
+   
+   # 重新安装依赖
+   pnpm install
+   ```
 
-### 2. NDK 版本不兼容
+2. **Android SDK/NDK 未找到**
+   - 确保已安装 Android SDK
+   - 设置环境变量 `ANDROID_HOME`
 
-使用 Android Studio SDK Manager 安装推荐的 NDK 版本 (25.2.9519653)。
+3. **Rust 目标未安装**
+   ```bash
+   rustup target add aarch64-linux-android
+   rustup target add armv7-linux-androideabi
+   rustup target add x86_64-linux-android
+   rustup target add i686-linux-android
+   ```
 
-### 3. 构建失败
+### 安装失败
 
-```bash
-# 清理缓存
-cd src-tauri
-cargo clean
-./gradlew clean  # Android 项目清理
-```
+1. **"无法安装应用"**
+   - 启用"允许安装未知应用"权限
+   - 如有旧版本，先卸载
 
-### 4. 设备无法连接
+2. **"应用未安装"**
+   - 检查设备存储空间
+   - 确认架构匹配（查看 设置 → 关于手机）
 
-```bash
-# 重启 ADB
-adb kill-server
-adb start-server
-```
+## 📚 相关资源
 
-## 发布检查清单
-
-- [ ] 更新版本号 (`tauri.conf.json`)
-- [ ] 测试所有架构 (ARM64, ARMv7)
-- [ ] 签名 APK
-- [ ] 测试升级流程
-- [ ] 检查权限声明
-- [ ] 更新更新日志
-
-## 参考链接
-
-- [Tauri Mobile 文档](https://tauri.app/develop/mobile/)
+- [Tauri 文档](https://tauri.app/)
 - [Android 开发文档](https://developer.android.com/)
-- [Mihomo 文档](https://wiki.metacubex.one/)
+- [Rust Android 文档](https://mozilla.github.io/firefox-browser-architecture/experiments/2017-09-21-rust-on-android.html)
 
+## 📄 许可证
+
+GPL-3.0 License - 详见根目录 LICENSE 文件
