@@ -1,0 +1,299 @@
+--------- beginning of main
+11-04 03:44:56.656 I/logcat  ( 5109): type=1400 audit(0.0:6306): avc: denied { write } for name="logd" dev="tmpfs" ino=10398 scontext=u:r:adbd:s0 tcontext=u:object_r:logd_socket:s0 tclass=sock_file permissive=1
+11-04 03:45:07.238 D/ProcessState( 5111): Binder ioctl to enable oneway spam detection failed: Invalid argument
+11-04 03:45:07.236 I/dumpsys ( 5111): type=1400 audit(0.0:6307): avc: denied { sendto } for path="/dev/socket/logdw" scontext=u:r:adbd:s0 tcontext=u:r:init:s0 tclass=unix_dgram_socket permissive=1
+11-04 03:45:07.236 I/dumpsys ( 5111): type=1400 audit(0.0:6308): avc: denied { call } for scontext=u:r:adbd:s0 tcontext=u:r:init:s0 tclass=binder permissive=1
+11-04 03:45:07.236 I/servicemanager( 1044): type=1400 audit(0.0:6309): avc: denied { transfer } for scontext=u:r:init:s0 tcontext=u:r:adbd:s0 tclass=binder permissive=1
+11-04 03:45:07.236 I/dumpsys ( 5111): type=1400 audit(0.0:6310): avc: denied { call } for scontext=u:r:adbd:s0 tcontext=u:r:system_server:s0 tclass=binder permissive=1
+11-04 03:45:07.236 I/dumpsys ( 5111): type=1400 audit(0.0:6311): avc: denied { write } for path="pipe:[36842]" dev="pipefs" ino=36842 scontext=u:r:system_server:s0 tcontext=u:r:adbd:s0 tclass=fifo_file permissive=1
+11-04 03:45:25.947 D/nemuinit( 1059): start name: vapi, operation: {"method":"POST","params":{"action":"get_focus_task"},"uri":"/tabs/tab"}, id: 708
+11-04 03:45:25.947 D/nemuinit( 1059): start name: update_network_time, operation: , id: 0
+11-04 03:45:25.952 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 709
+11-04 03:45:25.952 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/svma","method":"POST","params":{"action":"request_display_framerate","display_id":"0","high_fps":60,"low_fps":60}}, id: 710
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/svma","method":"POST","params":{"action":"request_display_framerate","display_id":"0","high_fps":60,"low_fps":60}}, res: 
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/svma","method":"POST","params":{"action":"request_display_framerate","display_id":"0","high_fps":60,"low_fps":60}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:25.953 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:25.954 I/InputDispatcher( 1289): Dropping event because there is no touchable window or gesture monitor at (867, 1631) in display 0.
+11-04 03:45:25.955 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"method":"POST","params":{"action":"get_focus_task"},"uri":"/tabs/tab"}, res: 
+--------- beginning of system
+11-04 03:45:25.956 V/DisplayPowerController[0]( 1289): Brightness [0.39763778] reason changing to: 'manual', previous reason: 'manual [ dim ]'.
+11-04 03:45:25.957 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:25.957 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"method":"POST","params":{"action":"get_focus_task"},"uri":"/tabs/tab"}, res: {"errcode":0,"message":"OK","return":{"id":"task:202","taskId":"202"}}
+11-04 03:45:25.957 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:25.971 D/ProcessState( 5124): Binder ioctl to enable oneway spam detection failed: Invalid argument
+11-04 03:45:25.975 W/ProcessStats( 1289): Tracking association SourceState{369ca49 system/1000 BTopFgs #1023} whose proc state 2 is better than process ProcessState{d238f4e io.github.clash_verge_rev.clash_verge_rev.debug/10044 pkg=io.github.clash_verge_rev.clash_verge_rev.debug} proc state 3 (1 skipped)
+11-04 03:45:25.975 D/NetworkTimeUpdateService( 1289): Stale NTP fix; forcing refresh
+11-04 03:45:25.977 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:25.977 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:25.978 I/DropBoxManagerService( 1289): add tag=system_server_wtf isTagEnabled=true flags=0x2
+11-04 03:45:25.979 I/DropBoxManagerService( 1289): add tag=system_server_wtf isTagEnabled=true flags=0x2
+11-04 03:45:25.980 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:25.980 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:25.988 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:25.988 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:25.988 I/DropBoxManagerService( 1289): add tag=system_server_wtf isTagEnabled=true flags=0x2
+11-04 03:45:25.989 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:25.989 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:25.989 I/DropBoxManagerService( 1289): add tag=system_server_wtf isTagEnabled=true flags=0x2
+11-04 03:45:26.011 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.012 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.012 I/DropBoxManagerService( 1289): add tag=system_server_wtf isTagEnabled=true flags=0x2
+11-04 03:45:26.013 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.013 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.026 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.026 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.028 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.028 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.040 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.041 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.049 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.050 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.055 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.055 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.057 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.057 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.072 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.072 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.072 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.072 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.086 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.086 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.087 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.087 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.103 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.103 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.105 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.105 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.120 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.120 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.120 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.120 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.136 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.136 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.138 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.138 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.153 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.153 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.154 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.154 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.170 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.170 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.171 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.171 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.186 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.186 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.188 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.188 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.203 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.203 E/DisplayDeviceConfig( 1289): requesting nits when no mapping exists.
+11-04 03:45:26.204 E/HWComposer( 1142): operator(): operator() failed for display 4619827820427265280: Unsupported (8)
+11-04 03:45:26.204 E/SurfaceFlinger( 1289): setDisplayBrightness: failed to transact: -38
+11-04 03:45:26.453 D/ViewRootImpl[BrowserActivity]( 4780): updatePointerIcon called with position out of bounds
+11-04 03:45:26.469 D/ViewRootImpl[BrowserActivity]( 4780): updatePointerIcon called with position out of bounds
+11-04 03:45:26.486 D/ViewRootImpl[BrowserActivity]( 4780): updatePointerIcon called with position out of bounds
+11-04 03:45:26.503 D/ViewRootImpl[BrowserActivity]( 4780): updatePointerIcon called with position out of bounds
+11-04 03:45:26.519 D/ViewRootImpl[BrowserActivity]( 4780): updatePointerIcon called with position out of bounds
+11-04 03:45:26.537 W/MouseCursorController( 1289): Can't find the resource for icon id 1002
+11-04 03:45:26.836 W/MouseCursorController( 1289): Can't find the resource for icon id 1002
+11-04 03:45:26.983 I/surfaceflinger( 1142): type=1400 audit(0.0:6312): avc: denied { call } for scontext=u:r:init:s0 tcontext=u:r:untrusted_app:s0:c25,c256,c512,c768 tclass=binder permissive=1
+11-04 03:45:26.983 I/surfaceflinger( 1142): type=1400 audit(0.0:6313): avc: denied { transfer } for scontext=u:r:init:s0 tcontext=u:r:untrusted_app:s0:c25,c256,c512,c768 tclass=binder permissive=1
+11-04 03:45:27.032 W/InputManager-JNI( 1289): Input channel object 'e3eb183 com.android.browser/com.android.browser.BrowserActivity (client)' was disposed without first being removed with the input manager!
+11-04 03:45:27.034 D/audio_hw_primary( 1122): tunnel_pcm_open called!
+11-04 03:45:27.036 V/WindowManager( 1289): Unknown focus tokens, dropping reportFocusChanged
+11-04 03:45:27.075 E/libprocessgroup( 1043): Failed to read task profiles from /etc/task_profiles.json
+11-04 03:45:27.075 E/libprocessgroup( 1043): Loading /etc/task_profiles.json for [1043] failed
+11-04 03:45:27.075 I/lowmemorykiller( 1043): Kill 'android.process.acore' (1912), uid 10017, oom_score_adj 955 to free 73688kB rss, 0kB swap; reason: device is not responding
+11-04 03:45:27.073 I/lmkd    ( 1043): type=1400 audit(0.0:6314): avc: denied { ipc_lock } for capability=14 scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=capability permissive=1
+11-04 03:45:27.078 D/CountryDetector( 1289): No listener is left
+11-04 03:45:27.078 I/Zygote  ( 1119): Process 1912 exited due to signal 9 (Killed)
+11-04 03:45:27.078 I/ActivityManager( 1289): Process android.process.acore (pid 1912) has died: cch+55 CEM 
+11-04 03:45:27.079 I/libprocessgroup( 1289): Successfully killed process cgroup uid 10017 pid 1912 in 0ms
+11-04 03:45:27.073 I/lmkd    ( 1043): type=1400 audit(0.0:6315): avc: denied { setsched } for scontext=u:r:init:s0 tcontext=u:r:priv_app:s0:c512,c768 tclass=process permissive=1
+11-04 03:45:27.076 I/main    ( 1119): type=1400 audit(0.0:6316): avc: denied { sendto } for path="/dev/socket/logdw" scontext=u:r:zygote:s0 tcontext=u:r:init:s0 tclass=unix_dgram_socket permissive=1
+11-04 03:45:27.076 I/lmkd    ( 1043): type=1400 audit(0.0:6317): avc: denied { write } for name="oom_score_adj" dev="proc" ino=20155 scontext=u:r:init:s0 tcontext=u:r:permissioncontroller_app:s0:c36,c256,c512,c768 tclass=file permissive=1
+11-04 03:45:27.076 I/lmkd    ( 1043): type=1400 audit(0.0:6318): avc: denied { write } for name="oom_score_adj" dev="proc" ino=22759 scontext=u:r:init:s0 tcontext=u:r:mediaprovider:s0:c512,c768 tclass=file permissive=1
+11-04 03:45:27.955 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tabs/tab","method":"POST","params":{"action":"open","id":"task:201"}}, id: 711
+11-04 03:45:27.955 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 712
+11-04 03:45:27.955 I/InputDispatcher( 1289): Dropping event because there is no touchable window or gesture monitor at (176, -33) in display 0.
+11-04 03:45:27.955 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:27.955 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:27.955 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tabs/tab","method":"POST","params":{"action":"open","id":"task:201"}}, res: 
+11-04 03:45:27.955 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:27.956 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:27.956 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:27.956 W/ContextImpl( 1440): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1181 android.content.ContextWrapper.sendBroadcast:479 com.netease.nemu_vapi_android.thread.NewFileUpdater.notifyFocusedTabChanged:496 com.netease.nemu_vapi_android.thread.NewFileUpdater.onTabOpen:432 com.netease.nemu_vapi_android.resource.TabManager.openTabImpl:221 
+11-04 03:45:27.957 D/NewFileUpdater( 1440): onTabOpen focusPkgName set to io.github.clash_verge_rev.clash_verge_rev.debug
+11-04 03:45:27.957 D/TabManager( 1440): setFocusTaskProp 201
+11-04 03:45:27.957 D/RecentTaskMonitor( 1289): openTabFromShell task is Task{123859 #201 type=standard A=10044:io.github.clash_verge_rev.clash_verge_rev.debug U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1} for 201
+11-04 03:45:27.960 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tabs/tab","method":"POST","params":{"action":"open","id":"task:201"}}, res: {"errcode":0,"message":"OK","return":{}}
+11-04 03:45:27.960 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:27.962 D/RecentTaskMonitor( 1289): onTaskFocusChanged [FALSE] 202
+11-04 03:45:27.962 D/RecentTaskMonitor( 1289): onTaskFocusChanged [TRUE] 201 ignoreTFC false
+11-04 03:45:27.964 D/WebViewTimersControl( 4780): onBrowserActivityPause
+11-04 03:45:27.964 D/WebViewTimersControl( 4780): Pausing webview timers, view=com.android.browser.BrowserWebView{777c816 VFEDHVCL. .F...... 0,0-900,1408 aid=1073741826}
+11-04 03:45:27.968 D/RecentTaskMonitor( 1289): task null or not sub display in notifyDisplayOpened
+11-04 03:45:27.968 D/RecentTaskMonitor( 1289): VAddressShellNotifier#notifyOpenTab :{"uri":"player\/tab","need_response":false,"params":{"id":"task:201","displayId":0,"userId":0,"name":"Clash Verge Rev","originName":"Clash Verge Rev","packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","launcher":false,"newTask":false,"icon":"iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAARISURBVEiJhZVbiFZVFMd\/\/7XP+eYbTS1zMqksTazJiaB69EEqojdBSIiCCuzFCF9kotT6CqNeohv10A2CXrpRFBEhhA9RgV0I1EEKLSW72dhUzu3svVcP53zfzDhpCzZ7szl7\/dda\/\/9aR5zFfOeewVRUV+C618SgwwVCEhoFO5gIz2Vax1ud9V+cyYfOdD\/50J63wDeZIcMBB4R3n3jAZbgXOH17+w7+cJPe2pz+F2Bsx97bLPCESCuDHMiYhBqIHogbToFTkinB+3\/33P\/Cot2rOmcEOLHz8\/uM9JSUg5EJypjyaVEYjnAPuEqgJHkLp43TJtL3yMCjyzvzAI49+OWWYLxkOEYiKBJIFIoEUTtFgJExoCQT6gy8RaaN00fyNu59T67Yfc72OpzGIu1d07mPaS+pvKRq9VNREr1FlQPRjeiB6AXJy96evCT2t+szRQ1quvNI5+S5AAXAofu\/f3Ha80rhyB0jc8HmFSxcs5jRZw\/go+PIuyQbUOAK2JIFnLt1FdUfFaMvjjWcBHBb1spLPgRfr2+3Hx0qyrzPnXavyspc+dhlSCLHzM+Pj8B0xATIkItsLS7ccTlWBtydnzoncUrwGsQJSOHmIluxZjrT1xViLcHeCSuM5dvWMnV0HGsbSPhkpnVRP1aGhkgRvQQVdYYKdfWdK4ro4d6MBODqci40SzrF4pJiaMnpip5jkQJhQACvH0vcU0QVQ11915yrbitnDsjZrO6WgDAkA6fpFdYUrvL8jOOuujJeZ+Kcuc3nAziZgKHaD00STr9FD0oeSBiZQFZg6VXCGvdjP1ac+j3is3gBmDiR+ftowt0xiUXXOhkjSiSJDGTA3Bmto1dv4iwdLHvhf\/3yBPuenmD8xMyYGf8j8c1zmSPvgzfX56wNJHeyQ6RZYtKS28GE0V0RMfHnTKTX3LWAYrlRTc3cxUkoVkQuuUUo1EFN\/e1MCypBagAyHNYnw1ObcubtbK5u7Vxw\/ZaC81cbmsX08ZFE0RIDqzXnfuxYZuTlZpD7jNxDYNgw\/ZigyhhJRmwy+eyVxOixOKfu7cVO\/3k+x\/mpscy+V8W4xAQwYTAlmDIYrzgkgI+2x3ey+SZXjZ4Momo1XbgO1q7PDFxcQDO2AUZ\/jox8avw6IoosCiBQUyfAnAM3PsrVAujgdt1w\/iWLgSjIgiTIJlJzxpxLhxJWiMP7RUqGIUqgcCgbgAbkrwyDGzs6bjWAcpXtmQhkidisCnqyqzC+219y6NuCqRSIEtOCKWBaMMmsJd7d2NFxOK2X3hj2TgrsSsJ6ZbI6o6wZ8rq7gCAwp1ei4Dx7e0fbmPXNHHv9AX8kGlujsSw3knPrjZfeDiDvDhcw+Kt0Pri7oztm+\/vPafDmrR5ODvKxww2V0WPWmT+fGudf\/ZbZ0Onon9N9nWXcuJ5\/iA3JWOdwj4vViIXNz3\/SxGEzXkuR77c9zHt1PvPtX3lH+1\/PWFyqAAAAAElFTkSuQmCC","canChangeAppOrientation":false,"canReceiveFile":false,"pid":4667,"uid":10044,"action":"open"}}
+11-04 03:45:27.969 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 713
+11-04 03:45:27.970 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:27.970 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:27.971 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:27.971 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:27.973 D/gralloc_x86( 1472): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:27.979 D/DropboxReceiver( 1440): dropbox tag: system_server_wtf
+11-04 03:45:27.979 D/DropboxReceiver( 1440): dropbox time: 1762199126012
+11-04 03:45:27.979 D/DropboxReceiver( 1440): dropbox file is not to be trackd
+11-04 03:45:27.980 D/ndroid.systemu( 1472): Features: 0 0 0
+11-04 03:45:27.981 E/ndroid.systemu( 1472): vulkan version is 4211003
+11-04 03:45:27.981 D/gralloc_x86( 1472): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:27.983 D/gralloc_x86( 1472): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:27.985 D/gralloc_x86( 1142): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:27.995 D/system_server( 1289): VAddressStream is reused...
+11-04 03:45:27.995 D/system_server( 1289): Features: 0 0 0
+11-04 03:45:27.995 E/system_server( 1289): vulkan version is 4211003
+11-04 03:45:27.997 W/OpenGLRenderer( 1289): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-04 03:45:28.019 I/verge_rev.debu( 4667): Waiting for a blocking GC Alloc
+11-04 03:45:28.020 I/verge_rev.debu( 4667): Starting a blocking GC Alloc
+11-04 03:45:28.034 I/verge_rev.debu( 4667): Waiting for a blocking GC Alloc
+11-04 03:45:28.057 I/verge_rev.debu( 4667): WaitForGcToComplete blocked Alloc on Background for 22.910ms
+11-04 03:45:28.057 I/verge_rev.debu( 4667): Starting a blocking GC Alloc
+11-04 03:45:28.074 D/gralloc_x86( 4667): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:28.083 D/verge_rev.debu( 4667): Features: 0 0 0
+11-04 03:45:28.083 E/verge_rev.debu( 4667): vulkan version is 4211003
+11-04 03:45:28.084 D/gralloc_x86( 4667): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:28.092 D/gralloc_x86( 4667): gralloc_alloc: Creating ashmem region of size 5763072
+11-04 03:45:28.130 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 714
+11-04 03:45:28.130 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 715
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.131 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.132 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 716
+11-04 03:45:28.132 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:28.132 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.132 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.132 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.132 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 717
+11-04 03:45:28.132 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.133 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 718
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.133 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 719
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:28.133 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.133 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, id: 720
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: 
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.134 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 721
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.134 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, id: 722
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.134 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 723
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: 
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:28.134 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:28.135 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.135 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.135 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:28.135 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:28.258 W/InputManager-JNI( 1289): Input channel object 'a14932a Splash Screen io.github.clash_verge_rev.clash_verge_rev.debug (client)' was disposed without first being removed with the input manager!
+11-04 03:45:28.790 I/wifi@1.0-servic( 1139): type=1400 audit(0.0:6333): avc: denied { write } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=netlink_route_socket permissive=1
+11-04 03:45:28.790 I/wifi@1.0-servic( 1139): type=1400 audit(0.0:6334): avc: denied { nlmsg_readpriv } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=netlink_route_socket permissive=1
+11-04 03:45:28.790 I/wifi@1.0-servic( 1139): type=1400 audit(0.0:6335): avc: denied { read } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=netlink_route_socket permissive=1
+11-04 03:45:29.094 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 724
+11-04 03:45:29.094 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 725
+11-04 03:45:29.094 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:29.094 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.094 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:29.095 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.095 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.095 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.095 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.095 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.095 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 726
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.096 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 727
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.096 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, id: 728
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: 
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.096 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.097 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/cmd","method":"POST","params":{"action":"switch_fps_mode","packageName":""}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.097 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.097 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 729
+11-04 03:45:29.097 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:29.097 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.097 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, id: 730
+11-04 03:45:29.097 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: 
+11-04 03:45:29.097 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.098 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 731
+11-04 03:45:29.098 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, id: 732
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.098 D/nemuinit( 1059): start name: vapi, operation: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, id: 733
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: 
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1289, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: 
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: not handleNemuInitMessage, use next callback
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_input_device_list","device":8,"packageName":"io.github.clash_verge_rev.clash_verge_rev.debug","pid":4667,"uid":10044}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.098 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.099 D/nemuinit( 1059): Proxy: use callback: 1440, handleNemuInitMessage, name: vapi, params: {"uri":"/tools/inputdevice","method":"POST","params":{"action":"set_gamepad_guid","guid":"off","name":"off","type":"off"}}, res: {"errcode":0,"message":"OK"}
+11-04 03:45:29.099 D/nemuinit( 1059): Proxy: finish handleNemuInitMessage
+11-04 03:45:29.437 D/ProxyRepository( 4667): Restored selected group index for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml: 0
+11-04 03:45:29.446 I/ProxyRepository( 4667): Using cached proxy data for: /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml
+11-04 03:45:29.517 D/ProxyRepository( 4667): Restored scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 5
+11-04 03:45:29.536 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 5
+11-04 03:45:29.549 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 5
+11-04 03:45:30.760 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 6
+11-04 03:45:30.827 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 7
+11-04 03:45:30.892 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 8
+11-04 03:45:30.959 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 9
+11-04 03:45:30.968 E/TaskPersister( 1289): File error accessing recents directory (directory doesn't exist?).
+11-04 03:45:30.981 D/SntpClient( 1289): request time failed: java.net.SocketTimeoutException: Poll timed out
+11-04 03:45:30.980 I/Binder:1118_2( 1118): type=1400 audit(0.0:6336): avc: denied { read write } for path="socket:[38436]" dev="sockfs" ino=38436 scontext=u:r:init:s0 tcontext=u:r:system_server:s0 tclass=udp_socket permissive=1
+11-04 03:45:30.980 I/Binder:1118_2( 1118): type=1400 audit(0.0:6337): avc: denied { getopt } for scontext=u:r:init:s0 tcontext=u:r:system_server:s0 tclass=udp_socket permissive=1
+11-04 03:45:30.980 I/Binder:1118_2( 1118): type=1400 audit(0.0:6338): avc: denied { setopt } for lport=41499 scontext=u:r:init:s0 tcontext=u:r:system_server:s0 tclass=udp_socket permissive=1
+11-04 03:45:31.060 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 10
+11-04 03:45:31.213 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11
+11-04 03:45:35.404 D/ProxyRepository( 4667): Restored selected group index for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml: 0
+11-04 03:45:35.416 I/ProxyRepository( 4667): Using cached proxy data for: /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml
+11-04 03:45:35.475 D/ProxyRepository( 4667): Restored scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11
+11-04 03:45:35.495 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11
+11-04 03:45:35.507 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11
+11-04 03:45:35.986 D/SntpClient( 1289): request time failed: java.net.SocketTimeoutException: Poll timed out
+11-04 03:45:36.737 D/ProxyRepository( 4667): Restored selected group index for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml: 0
+11-04 03:45:36.746 I/ProxyRepository( 4667): Using cached proxy data for: /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml
+11-04 03:45:36.808 D/ProxyRepository( 4667): Restored scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11
+11-04 03:45:36.827 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11
+11-04 03:45:36.840 D/ProxyRepository( 4667): Saved scroll position for /data/user/0/io.github.clash_verge_rev.clash_verge_rev.debug/files/configs/订阅配置 2025-11-04 03:39.yaml group -906991404: 11

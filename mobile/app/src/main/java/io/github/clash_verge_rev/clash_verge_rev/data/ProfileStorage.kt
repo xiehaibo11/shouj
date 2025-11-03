@@ -36,7 +36,21 @@ class ProfileStorage private constructor(private val context: Context) {
         val expireTime: Long = 0,           // 过期时间（秒时间戳）
         val updateInterval: Int = 0,        // 更新间隔（秒）
         val nodeCount: Int = 0,             // 节点数量
-        val providers: List<String> = emptyList() // 供应商列表
+        val providers: List<String> = emptyList(), // 供应商列表
+        val desc: String? = null,           // 描述（对应桌面端）
+        val home: String? = null,           // 主页URL（对应桌面端）
+        val selected: List<String> = emptyList(), // 选中的代理节点
+        val option: ProfileOption? = null   // 更新选项（对应桌面端）
+    )
+    
+    /**
+     * 订阅更新选项（对应桌面端的option字段）
+     */
+    data class ProfileOption(
+        val withProxy: Boolean = false,    // 使用系统代理
+        val selfProxy: Boolean = false,    // 使用自身代理
+        val timeoutSeconds: Int = 30,      // 超时时间（秒）
+        val userAgent: String? = null      // 自定义User Agent
     )
 
     enum class ProfileType {
@@ -63,10 +77,30 @@ class ProfileStorage private constructor(private val context: Context) {
                 put("updateInterval", metadata.updateInterval)
                 put("nodeCount", metadata.nodeCount)
                 put("providers", JSONArray(metadata.providers))
+                
+                // 新增字段（对应桌面端）
+                metadata.desc?.let { put("desc", it) }
+                metadata.home?.let { put("home", it) }
+                if (metadata.selected.isNotEmpty()) {
+                    put("selected", JSONArray(metadata.selected))
+                }
+                metadata.option?.let { option ->
+                    put("option", JSONObject().apply {
+                        put("withProxy", option.withProxy)
+                        put("selfProxy", option.selfProxy)
+                        put("timeoutSeconds", option.timeoutSeconds)
+                        option.userAgent?.let { put("userAgent", it) }
+                    })
+                }
             }
 
-            preferences.edit().putString(metadata.uid, json.toString()).apply()
-            Log.i(TAG, "Saved profile metadata: ${metadata.uid}")
+            // 使用 commit() 确保同步保存，避免时序问题
+            val success = preferences.edit().putString(metadata.uid, json.toString()).commit()
+            if (success) {
+                Log.i(TAG, "Saved profile metadata: ${metadata.uid}")
+            } else {
+                Log.e(TAG, "Failed to commit save for: ${metadata.uid}")
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to save profile metadata", e)
         }
@@ -96,7 +130,21 @@ class ProfileStorage private constructor(private val context: Context) {
                 nodeCount = json.optInt("nodeCount", 0),
                 providers = json.optJSONArray("providers")?.let { arr ->
                     (0 until arr.length()).map { arr.getString(it) }
-                } ?: emptyList()
+                } ?: emptyList(),
+                // 新增字段（对应桌面端）
+                desc = json.optString("desc")?.takeIf { it.isNotEmpty() },
+                home = json.optString("home")?.takeIf { it.isNotEmpty() },
+                selected = json.optJSONArray("selected")?.let { arr ->
+                    (0 until arr.length()).map { arr.getString(it) }
+                } ?: emptyList(),
+                option = json.optJSONObject("option")?.let { optJson ->
+                    ProfileOption(
+                        withProxy = optJson.optBoolean("withProxy", false),
+                        selfProxy = optJson.optBoolean("selfProxy", false),
+                        timeoutSeconds = optJson.optInt("timeoutSeconds", 30),
+                        userAgent = optJson.optString("userAgent")?.takeIf { it.isNotEmpty() }
+                    )
+                }
             )
         } catch (e: Exception) {
             Log.e(TAG, "Failed to get profile metadata: $uid", e)
@@ -127,8 +175,13 @@ class ProfileStorage private constructor(private val context: Context) {
         try {
             val exists = preferences.contains(uid)
             if (exists) {
-                preferences.edit().remove(uid).apply()
-                Log.i(TAG, "Deleted profile metadata: $uid")
+                // 使用 commit() 确保同步删除，避免时序问题
+                val success = preferences.edit().remove(uid).commit()
+                if (success) {
+                    Log.i(TAG, "Deleted profile metadata: $uid")
+                } else {
+                    Log.e(TAG, "Failed to commit deletion for: $uid")
+                }
             } else {
                 Log.w(TAG, "Profile metadata not found: $uid")
             }

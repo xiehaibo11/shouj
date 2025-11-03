@@ -35,12 +35,6 @@ message(STATUS "Go output directory: ${GO_OUTPUT_DIR}")
 # 查找日志库
 find_library(log-lib log)
 
-# 导入 Go 编译的库（预先构建）
-add_library(clash-core SHARED IMPORTED)
-set_target_properties(clash-core PROPERTIES 
-    IMPORTED_LOCATION ${GO_OUTPUT_DIR}/libclash.so
-)
-
 # 创建 JNI 桥接库
 add_library(clash-jni SHARED
     native-lib.cpp
@@ -51,12 +45,23 @@ target_include_directories(clash-jni PRIVATE
     ${CMAKE_SOURCE_DIR}/../golang
 )
 
-# 链接库
+# 链接库 - 不直接链接libclash.so，而是运行时动态加载
 target_link_libraries(clash-jni
-    clash-core
     ${log-lib}
     android
 )
+
+# 告诉链接器允许未定义的符号（它们将在运行时从libclash.so中解析）
+if(ANDROID_ALLOW_UNDEFINED_SYMBOLS)
+    message(STATUS "Allowing undefined symbols for runtime resolution")
+    target_link_options(clash-jni PRIVATE
+        "-Wl,--warn-unresolved-symbols"
+        "-Wl,--unresolved-symbols=ignore-all"
+    )
+else()
+    # 默认行为：链接libclash.so
+    message(STATUS "Strict linking mode")
+endif()
 
 # 编译选项
 target_compile_options(clash-jni PRIVATE

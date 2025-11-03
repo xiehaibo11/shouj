@@ -7,6 +7,7 @@ package io.github.clash_verge_rev.clash_verge_rev.data
 
 /**
  * 代理节点
+ * 对应桌面端的IProxyItem
  */
 data class ProxyNode(
     val name: String,
@@ -14,6 +15,12 @@ data class ProxyNode(
     val server: String? = null,
     val port: Int? = null,
     val udp: Boolean = false,
+    val xudp: Boolean = false,  // XUDP支持
+    val tfo: Boolean = false,   // TCP Fast Open
+    val mptcp: Boolean = false, // Multi-Path TCP
+    val smux: Boolean = false,  // Stream Multiplexing
+    val provider: String? = null, // 节点提供者
+    val now: String? = null,     // 当前选中的子节点（如果是组）
     val delay: Int? = null,  // 延迟ms，null表示未测试
     val history: List<DelayHistory> = emptyList()
 )

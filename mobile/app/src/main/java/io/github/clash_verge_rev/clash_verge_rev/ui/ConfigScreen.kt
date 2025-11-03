@@ -8,7 +8,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import io.github.clash_verge_rev.clash_verge_rev.data.ProfileStorage
 import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
@@ -22,6 +24,9 @@ fun ConfigScreen(
     configDir: File,
     onLoadConfig: (File) -> Unit = {}
 ) {
+    val context = LocalContext.current
+    val profileStorage = remember { ProfileStorage.getInstance(context) }
+    val coroutineScope = rememberCoroutineScope()
     var configFiles by remember { mutableStateOf<List<File>>(emptyList()) }
     var selectedConfig by remember { mutableStateOf<File?>(null) }
     var showAddDialog by remember { mutableStateOf(false) }
@@ -165,10 +170,18 @@ fun ConfigScreen(
             confirmButton = {
                 TextButton(
                     onClick = {
-                        file.delete()
-                        configFiles = configFiles.filter { it != file }
-                        if (selectedConfig == file) {
-                            selectedConfig = null
+                        coroutineScope.launch {
+                            // 先删除元数据
+                            val uid = file.nameWithoutExtension
+                            profileStorage.deleteProfile(uid)
+                            
+                            // 再删除文件
+                            if (file.delete()) {
+                                configFiles = configFiles.filter { it != file }
+                                if (selectedConfig == file) {
+                                    selectedConfig = null
+                                }
+                            }
                         }
                         showDeleteDialog = null
                     }

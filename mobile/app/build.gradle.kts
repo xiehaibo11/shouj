@@ -23,6 +23,14 @@ android {
             // 支持的 ABI
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
         }
+        
+        externalNativeBuild {
+            cmake {
+                // 禁用 --no-undefined，允许运行时解析符号
+                arguments("-DANDROID_ALLOW_UNDEFINED_SYMBOLS=TRUE")
+                cppFlags("-fexceptions", "-frtti")
+            }
+        }
     }
 
     buildTypes {
@@ -39,6 +47,12 @@ android {
             isDebuggable = true
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
+            packagingOptions {
+                jniLibs {
+                    useLegacyPackaging = false
+                    keepDebugSymbols += "**/*.so"
+                }
+            }
         }
     }
 
@@ -127,6 +141,9 @@ dependencies {
     
     // YAML 解析
     implementation("org.yaml:snakeyaml:2.2")
+    
+    // HTTP Server for Mihomo API
+    implementation("org.nanohttpd:nanohttpd:2.3.1")
 
     // 数据存储
     implementation("androidx.datastore:datastore-preferences:1.0.0")

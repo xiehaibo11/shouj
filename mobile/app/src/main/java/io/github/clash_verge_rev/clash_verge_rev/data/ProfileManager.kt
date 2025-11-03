@@ -67,22 +67,60 @@ class ProfileManager(private val context: Context) {
             // 2. 从响应头或内容中提取名称
             val profileName = extractProfileName(content, url, responseHeaders)
             
-            // 3. 保存配置文件
-            val configFile = saveProfile(profileName, content)
+            // 3. 自动注入 external-controller（如果缺失）
+            var processedContent = content
+            if (!content.contains("external-controller:", ignoreCase = true)) {
+                Log.i(TAG, "Adding external-controller to config")
+                processedContent = """
+                    # Auto-injected by Clash Verge Rev
+                    external-controller: 127.0.0.1:9090
+                    secret: ""
+                    
+                """.trimIndent() + content
+            }
+            
+            // 4. 自动注入 DNS 配置（关键修复 - TUN 模式必需）
+            if (!processedContent.contains("dns:", ignoreCase = true) || 
+                !processedContent.contains("enhanced-mode:", ignoreCase = true)) {
+                Log.i(TAG, "Adding DNS configuration for TUN mode compatibility (Android optimized)")
+                processedContent = """
+                    # Auto-injected DNS configuration for TUN mode (Android optimized)
+                    # Android 非 root 无法绑定 53 端口，使用 1053 + DNSHijack
+                    dns:
+                      enable: true
+                      listen: 127.0.0.1:1053
+                      enhanced-mode: fake-ip
+                      fake-ip-range: 198.18.0.1/16
+                      nameserver:
+                        - https://1.1.1.1/dns-query
+                        - https://8.8.8.8/dns-query
+                      fallback:
+                        - https://dns.alidns.com/dns-query
+                        - https://doh.pub/dns-query
+                      fallback-filter:
+                        geoip: true
+                        ipcidr:
+                          - 240.0.0.0/4
+                    
+                """.trimIndent() + processedContent
+            }
+            
+            // 4. 保存配置文件
+            val configFile = saveProfile(profileName, processedContent)
             val uid = configFile.nameWithoutExtension
             
             Log.i(TAG, "Profile saved: ${configFile.absolutePath}")
             
-            // 4. 提取供应商信息
-            val providers = extractProviders(content)
+            // 5. 提取供应商信息
+            val providers = extractProviders(processedContent)
             
-            val nodeCount = countNodes(content)
+            val nodeCount = countNodes(processedContent)
             Log.i(TAG, "Profile imported: name=$profileName, nodes=$nodeCount, providers=${providers.size}")
             
-            // 5. 解析流量信息
+            // 6. 解析流量信息
             val trafficInfo = parseTrafficInfo(responseHeaders)
             
-            // 6. 保存元数据
+            // 7. 保存元数据
             val metadata = ProfileStorage.ProfileMetadata(
                 uid = uid,
                 name = profileName,
@@ -513,12 +551,50 @@ class ProfileManager(private val context: Context) {
                 return@withContext Result.failure(Exception("订阅内容为空"))
             }
             
+            // 自动注入 external-controller（如果缺失）
+            var processedContent = content
+            if (!content.contains("external-controller:", ignoreCase = true)) {
+                Log.i(TAG, "Adding external-controller to updated config")
+                processedContent = """
+                    # Auto-injected by Clash Verge Rev
+                    external-controller: 127.0.0.1:9090
+                    secret: ""
+                    
+                """.trimIndent() + content
+            }
+            
+            // 自动注入 DNS 配置（关键修复 - TUN 模式必需）
+            if (!processedContent.contains("dns:", ignoreCase = true) || 
+                !processedContent.contains("enhanced-mode:", ignoreCase = true)) {
+                Log.i(TAG, "Adding DNS configuration to updated config for TUN mode (Android optimized)")
+                processedContent = """
+                    # Auto-injected DNS configuration for TUN mode (Android optimized)
+                    # Android 非 root 无法绑定 53 端口，使用 1053 + DNSHijack
+                    dns:
+                      enable: true
+                      listen: 127.0.0.1:1053
+                      enhanced-mode: fake-ip
+                      fake-ip-range: 198.18.0.1/16
+                      nameserver:
+                        - https://1.1.1.1/dns-query
+                        - https://8.8.8.8/dns-query
+                      fallback:
+                        - https://dns.alidns.com/dns-query
+                        - https://doh.pub/dns-query
+                      fallback-filter:
+                        geoip: true
+                        ipcidr:
+                          - 240.0.0.0/4
+                    
+                """.trimIndent() + processedContent
+            }
+            
             // 覆盖原文件
-            file.writeText(content)
+            file.writeText(processedContent)
             val uid = file.nameWithoutExtension
             
-            val providers = extractProviders(content)
-            val nodeCount = countNodes(content)
+            val providers = extractProviders(processedContent)
+            val nodeCount = countNodes(processedContent)
             
             // 解析流量信息
             val trafficInfo = parseTrafficInfo(headers)

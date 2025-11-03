@@ -70,3 +70,24 @@
 -keep interface androidx.** { *; }
 -dontwarn androidx.**
 
+# SnakeYAML
+-keep class org.yaml.snakeyaml.** { *; }
+-dontwarn org.yaml.snakeyaml.**
+-dontwarn java.beans.**
+
+# Keep all native methods (JNI)
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}
+
+# Keep ClashCore native interface
+-keep class io.github.clash_verge_rev.clash_verge_rev.core.ClashCore { *; }
+-keep class io.github.clash_verge_rev.clash_verge_rev.core.ClashCore$* { *; }
+
+# Keep VPN Service
+-keep class io.github.clash_verge_rev.clash_verge_rev.service.ClashVpnService { *; }
+
+# Keep reflection-based classes
+-keepattributes InnerClasses
+-keepattributes EnclosingMethod
+
