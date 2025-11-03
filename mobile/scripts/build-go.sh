@@ -76,7 +76,17 @@ build_for_arch() {
     export GOOS=android
     export GOARCH=$GOARCH
     export CGO_ENABLED=1
-    export CC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/$(uname | tr '[:upper:]' '[:lower:]')-x86_64/bin/${CC_PREFIX}-clang"
+    
+    # 检测是否在 WSL 环境中
+    if grep -qi microsoft /proc/version 2>/dev/null; then
+        # WSL 环境，使用 windows-x86_64
+        NDK_HOST="windows-x86_64"
+    else
+        # 原生 Linux/macOS
+        NDK_HOST="$(uname | tr '[:upper:]' '[:lower:]')-x86_64"
+    fi
+    
+    export CC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/${NDK_HOST}/bin/${CC_PREFIX}-clang"
     
     if [ -n "$GOARM" ]; then
         export GOARM=$GOARM

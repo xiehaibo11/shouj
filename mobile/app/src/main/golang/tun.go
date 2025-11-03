@@ -21,7 +21,7 @@ var (
 	tunFile      *os.File
 	tunStopChan  chan struct{}
 	tunWaitGroup sync.WaitGroup
-	
+
 	// 流量统计
 	uploadBytes   atomic.Int64
 	downloadBytes atomic.Int64
@@ -32,33 +32,29 @@ func startTunDevice(fd int, mtu int) error {
 	if tunRunning.Load() {
 		return fmt.Errorf("TUN already running")
 	}
-	
-	// C.LOGI(C.CString(fmt.Sprintf("Starting TUN device: fd=%d, mtu=%d", fd, mtu)))
-	
+
+	C.LOGI(C.CString(fmt.Sprintf("🚀 Starting TUN device: fd=%d, mtu=%d", fd, mtu)))
+
 	// 使用 fd 创建文件对象
 	tunFile = os.NewFile(uintptr(fd), "tun")
 	if tunFile == nil {
+		C.LOGE(C.CString("Failed to create file from fd"))
 		return fmt.Errorf("failed to create file from fd")
 	}
-	
+
 	// 创建停止信号通道
 	tunStopChan = make(chan struct{})
-	
+
 	// 标记为运行中
 	tunRunning.Store(true)
-	
-	// 启动 Mihomo TUN
-	if err := startMihomoTun(fd, mtu); err != nil {
-		// C.LOGE(C.CString(fmt.Sprintf("Failed to start Mihomo TUN: %v", err)))
-		// 降级到简单处理模式
-		// C.LOGI(C.CString("Fallback to simple packet processing"))
-	}
-	
+
 	// 启动数据包处理协程
 	tunWaitGroup.Add(1)
 	go processTunPackets()
-	
-	// C.LOGI(C.CString("TUN device started successfully"))
+
+	C.LOGI(C.CString("✅ TUN device started"))
+	C.LOGI(C.CString("  → Packets will be logged (no forwarding yet)"))
+	C.LOGI(C.CString("  → Use VPN mode with Simple SOCKS5 proxy on 127.0.0.1:7897"))
 	return nil
 }
 
@@ -67,30 +63,25 @@ func stopTunDevice() error {
 	if !tunRunning.Load() {
 		return fmt.Errorf("TUN not running")
 	}
-	
-	// C.LOGI(C.CString("Stopping TUN device..."))
-	
+
+	C.LOGI(C.CString("Stopping TUN device..."))
+
 	// 标记为停止
 	tunRunning.Store(false)
-	
-	// 停止 Mihomo TUN
-	if err := stopMihomoTun(); err != nil {
-		// C.LOGE(C.CString(fmt.Sprintf("Warning: Failed to stop Mihomo TUN: %v", err)))
-	}
-	
+
 	// 发送停止信号
 	close(tunStopChan)
-	
+
 	// 等待协程退出
 	tunWaitGroup.Wait()
-	
+
 	// 关闭文件
 	if tunFile != nil {
 		tunFile.Close()
 		tunFile = nil
 	}
-	
-	// C.LOGI(C.CString("TUN device stopped"))
+
+	C.LOGI(C.CString("✅ TUN device stopped"))
 	return nil
 }
 
@@ -102,11 +93,11 @@ func processTunPackets() {
 			// C.LOGE(C.CString(fmt.Sprintf("Panic in processTunPackets: %v", r)))
 		}
 	}()
-	
+
 	// C.LOGI(C.CString("TUN packet processing started"))
-	
+
 	buffer := make([]byte, 65535)
-	
+
 	for tunRunning.Load() {
 		select {
 		case <-tunStopChan:
@@ -121,18 +112,18 @@ func processTunPackets() {
 				}
 				continue
 			}
-			
+
 			if n > 0 {
 				// 更新下载统计
 				downloadBytes.Add(int64(n))
-				
+
 				// 处理数据包
 				packet := buffer[:n]
 				processPacket(packet)
 			}
 		}
 	}
-	
+
 	// C.LOGI(C.CString("TUN packet processing stopped"))
 }
 
@@ -140,15 +131,15 @@ func processTunPackets() {
 func processPacket(packet []byte) {
 	// 简单的数据包处理逻辑
 	// TODO: 集成 Mihomo 的完整 TUN 栈
-	
+
 	if len(packet) < 20 {
 		// 数据包太小，忽略
 		return
 	}
-	
+
 	// 解析 IP 版本
 	version := packet[0] >> 4
-	
+
 	switch version {
 	case 4:
 		// IPv4 数据包
@@ -167,9 +158,9 @@ func processIPv4Packet(packet []byte) {
 	if err != nil || ipPacket == nil {
 		return
 	}
-	
+
 	proxy := getProxyForPacket(ipPacket.DstIP, ipPacket.DstPort)
-	
+
 	if proxy.Type == "direct" {
 		if tunFile != nil && tunRunning.Load() {
 			n, err := tunFile.Write(packet)
@@ -193,9 +184,9 @@ func processIPv6Packet(packet []byte) {
 	if err != nil || ipPacket == nil {
 		return
 	}
-	
+
 	proxy := getProxyForPacket(ipPacket.DstIP, ipPacket.DstPort)
-	
+
 	if proxy.Type == "direct" {
 		if tunFile != nil && tunRunning.Load() {
 			n, err := tunFile.Write(packet)
@@ -224,4 +215,3 @@ func resetTrafficStats() {
 	downloadBytes.Store(0)
 	// C.LOGI(C.CString("Traffic stats reset"))
 }
-

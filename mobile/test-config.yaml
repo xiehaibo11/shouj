@@ -1,0 +1,94 @@
+# Clash Verge Rev 测试配置
+# 用于模拟器测试 Mihomo 核心功能
+
+# 混合端口（HTTP + SOCKS5）
+mixed-port: 7897
+
+# 外部控制器（API 端口）- 必需
+external-controller: 127.0.0.1:9090
+
+# 运行模式
+mode: rule
+
+# 日志级别
+log-level: info
+
+# IPv6 支持
+ipv6: true
+
+# 允许局域网连接
+allow-lan: false
+
+# DNS 配置
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+  fallback:
+    - tls://8.8.4.4:853
+    - tls://1.0.0.1:853
+
+# 代理节点（示例 - 使用 DIRECT 进行测试）
+proxies:
+  - name: "DIRECT"
+    type: direct
+  
+  # 示例节点（需要替换为真实的代理服务器信息）
+  # - name: "测试节点-SS"
+  #   type: ss
+  #   server: example.com
+  #   port: 8388
+  #   cipher: aes-256-gcm
+  #   password: your-password
+  
+  # - name: "测试节点-VMess"
+  #   type: vmess
+  #   server: example.com
+  #   port: 443
+  #   uuid: your-uuid
+  #   alterId: 0
+  #   cipher: auto
+  #   tls: true
+
+# 代理组
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - DIRECT
+      # - 测试节点-SS
+      # - 测试节点-VMess
+  
+  - name: "Auto"
+    type: url-test
+    proxies:
+      - DIRECT
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+  
+  - name: "Fallback"
+    type: fallback
+    proxies:
+      - DIRECT
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+# 规则
+rules:
+  # 测试规则
+  - DOMAIN-SUFFIX,google.com,PROXY
+  - DOMAIN-SUFFIX,youtube.com,PROXY
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - DOMAIN-KEYWORD,google,PROXY
+  
+  # 国内直连
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-KEYWORD,baidu,DIRECT
+  - GEOIP,CN,DIRECT
+  
+  # 默认规则
+  - MATCH,PROXY
